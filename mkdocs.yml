@@ -1,4 +1,5 @@
 site_name: Plume
+
 theme:
   name: material
   palette:
@@ -6,3 +7,17 @@ theme:
     accent: blue grey
   logo: assets/images/logo-white.png
   favicon: assets/images/logo.png
+
+nav:
+  - Introduction: 'index.md'
+  - 'Getting Started':
+      - 'Dependencies': 'getting-started/dependencies.md'
+      - 'Basic Usage': 'getting-started/basic-usage.md'
+      - 'Architectural Overview': 'getting-started/architectural-overview.md'
+  - 'Plume Basics':
+      - 'Extracting the CPG from JVM Bytecode': 'plume-basics/extracting-cpg.md'
+  - 'Storage Backends':
+      - 'Introduction': 'storage-backends/introduction.md'
+      - 'TinkerGraph': 'storage-backends/tinkergraph.md'
+      - 'JanusGraph': 'storage-backends/janusgraph.md'
+      - 'TigerGraph': 'storage-backends/tigergraph.md'
