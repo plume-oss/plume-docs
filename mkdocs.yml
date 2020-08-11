@@ -1,6 +1,21 @@
+# Project information
 site_name: Plume
+site_url: https://plume-oss.github.io/plume-docs/
+site_author: David Baker Effendi
+site_description: >-
+  A Soot-based, open-source code-property graph (CPG) analysis 
+  library to project and incrementally analyze the CPG of programs
+  in graph databases.
+# Repository
+repo_name: plume-oss
+repo_url: https://github.com/plume-oss
+edit_uri: ""
+
+# Copyright
+copyright: Copyright &copy; 2020 David Baker Effendi
 
 theme:
+  language: 'en'
   name: material
   palette:
     primary: light blue
