@@ -8,7 +8,7 @@ This call graph is then converted into what is called a [code-property graph](ht
 control flow graph (CFG), and program dependence graph (PDG). This three part graph is then persisted in a 
 supported graph database and can be queried and analyzed via the library or queried against the database natively.
 
-Note that plume is still under development and does not have an official release yet.
+Note that Plume is still under development and does not have an official release yet.
 
 ## Benefits of using Plume
 
@@ -29,10 +29,10 @@ require.
 
 ## General Plume Benefits
 
-* Choice of graph database: inmemory to dedicated, open-source to enterprise, single node to clustered.
+* Choice of graph database: in-memory to dedicated, open-source to enterprise, single node to multi-machine clustered.
 * CPG schema strictly enforced in the Plume driver.
 * Handles very large code property graphs.
-* Analysis can be done multi-machine clusters and incrementally.
+* Analysis can be done incrementally.
 * Simple to use interface.
 * Open source under the liberal [Apache 2 license](https://en.wikipedia.org/wiki/Apache_License).
 
