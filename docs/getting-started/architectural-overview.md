@@ -16,7 +16,7 @@ This interface is defined by [`IDriver`](https://plume-oss.github.io/plume-drive
 and is what is implemented by the database drivers such as the [TinkerGraph driver](https://plume-oss.github.io/plume-driver/kotlindoc/za/ac/sun/plume/drivers/tinkergraphdriver/) 
 or [TigerGraph driver](https://plume-oss.github.io/plume-driver/kotlindoc/za/ac/sun/plume/drivers/tigergraphdriver/).
 
-![Plume Architectural Overview](../assets/images/driver-overview.png)
+![Driver Architectural Overview](../assets/images/driver-overview.png)
 
 The extractor and analyser make use of the driver but one can use the driver independently to perform
 one's own CPG construction or analysis. Currently there are only a handful of graph databases supported by
@@ -26,10 +26,19 @@ the driver but we are continually looking at supporting more graph databases.
 
 The extractor is in charge of constructing the code property graph from bytecode. The entrypoint
 for this component is the `Extractor` class where one can load and project the CPG using the given
-driver and classpath. The extractor makes use of [Soot](https://soot-oss.github.io/soot/) which 
-reads the class files then converts them into Jimple from which the call graph is constructed. 
+driver and classpath. 
+
+Either source or class files can be loaded where source files will be compiled into class files.
+The extractor makes use of [Soot](https://soot-oss.github.io/soot/) to convert the class files 
+into Jimple from which the call graph is constructed. 
 Soot's [`UnitGraph`](https://www.sable.mcgill.ca/soot/doc/soot/toolkits/graph/UnitGraph.html)
 is used in order to construct the method bodies.
+
+![Extractor Architectural Overview](../assets/images/extractor-overview.png)
+
+Due to the fact that Plume constructs the CPG from bytecode, the graph produced is not completely
+interchangeable with the source code (and even less after the transformation to Jimple!) but line
+number and dataflow information is accurately preserved.
 
 ## Analyser
 
