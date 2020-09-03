@@ -36,7 +36,7 @@ nav:
       - 'Basic Usage': 'getting-started/basic-usage.md'
       - 'Architectural Overview': 'getting-started/architectural-overview.md'
   - 'Plume Basics':
-      - 'Extracting the CPG from JVM Bytecode': 'plume-basics/extracting-cpg.md'
+      - 'Using the Extractor': 'plume-basics/extracting-cpg.md'
   - 'Storage Backends':
       - 'Introduction': 'storage-backends/introduction.md'
       - 'TinkerGraph': 'storage-backends/tinkergraph.md'
