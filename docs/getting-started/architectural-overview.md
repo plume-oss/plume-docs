@@ -1,7 +1,7 @@
 # Architectural Overview
 
 
-![Plume Architectural Overview](../assets/images/architectural-overview.png){: align=right }
+![Plume Architectural Overview](../assets/images/architectural-overview.png){: align=right style="height:300px;width:300px" }
 
 Plume is divided into three major parts: an extractor, an analyser, and a driver.
 Each part can then be subdivided further but this separation of concerns allows for
