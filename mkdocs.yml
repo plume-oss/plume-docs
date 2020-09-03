@@ -14,6 +14,9 @@ edit_uri: ""
 # Copyright
 copyright: Copyright &copy; 2020 David Baker Effendi
 
+plugins:
+  - search
+
 theme:
   language: 'en'
   name: material
@@ -42,3 +45,8 @@ nav:
 
 markdown_extensions:
   - attr_list
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.snippets
+  - pymdownx.details
+  - markdown.extensions.admonition
