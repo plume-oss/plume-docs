@@ -22,8 +22,8 @@ theme:
   name: material
   palette:
     scheme: slate
-    primary: light blue
-    accent: blue grey
+    primary: cyan
+    accent: deep orange
   logo: assets/images/logo-white.png
   favicon: assets/images/logo.png
   icon:
