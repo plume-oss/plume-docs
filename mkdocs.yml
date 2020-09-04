@@ -42,6 +42,7 @@ nav:
       - 'TinkerGraph': 'storage-backends/tinkergraph.md'
       - 'JanusGraph': 'storage-backends/janusgraph.md'
       - 'TigerGraph': 'storage-backends/tigergraph.md'
+  - 'KDoc API': 'kdoc.md'
 
 markdown_extensions:
   - attr_list

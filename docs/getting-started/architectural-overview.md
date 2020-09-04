@@ -25,8 +25,8 @@ the driver but we are continually looking at supporting more graph databases.
 ## Extractor
 
 The extractor is in charge of constructing the code property graph from bytecode. The entrypoint
-for this component is the `Extractor` class where one can load and project the CPG using the given
-driver and classpath. 
+for this component is the [`Extractor`](https://plume-oss.github.io/plume-extractor/kotlindoc/za/ac/sun/plume/extractor/)
+class where one can load and project the CPG using the given driver and classpath. 
 
 Either source or class files can be loaded where source files will be compiled into class files.
 The extractor makes use of [Soot](https://soot-oss.github.io/soot/) to convert the class files 
