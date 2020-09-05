@@ -6,53 +6,52 @@ you have the respective jar e.g. `plume-driver-X.X.X.jar` in a folder called `li
 
 The JARs can be downloaded from the respective Plume repository.
 
-!!! example "Plume Dependencies"
 
-    === "Driver"
-        Gradle
-        ```groovy
-        repositories {
-            flatDir {
-                dirs 'lib'
-            }
+=== "Driver"
+    Gradle
+    ```groovy
+    repositories {
+        flatDir {
+            dirs 'lib'
         }
-        dependencies {
-            implementation name: 'plume-driver-X.X.X'
-        }
-        ```
-        Maven
-        ```mxml
-        <dependency>
-            <groupId>za.ac.sun.plume</groupId>
-            <artifactId>plume-driver</artifactId>
-            <version>X.X.X</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/plume-driver-X.X.X.jar</systemPath>
-        </dependency>
-        ```
+    }
+    dependencies {
+        implementation name: 'plume-driver-X.X.X'
+    }
+    ```
+    Maven
+    ```mxml
+    <dependency>
+        <groupId>za.ac.sun.plume</groupId>
+        <artifactId>plume-driver</artifactId>
+        <version>X.X.X</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/plume-driver-X.X.X.jar</systemPath>
+    </dependency>
+    ```
 
-    === "Extractor"
-        Gradle
-        ```groovy
-        repositories {
-            flatDir {
-                dirs 'lib'
-            }
+=== "Extractor"
+    Gradle
+    ```groovy
+    repositories {
+        flatDir {
+            dirs 'lib'
         }
-        dependencies {
-            implementation name: 'plume-extractor-X.X.X'
-        }
-        ```
-        Maven
-        ```mxml
-        <dependency>
-            <groupId>za.ac.sun.plume</groupId>
-            <artifactId>plume-extractor</artifactId>
-            <version>X.X.X</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/plume-extractor-X.X.X.jar</systemPath>
-        </dependency>
-        ```
+    }
+    dependencies {
+        implementation name: 'plume-extractor-X.X.X'
+    }
+    ```
+    Maven
+    ```mxml
+    <dependency>
+        <groupId>za.ac.sun.plume</groupId>
+        <artifactId>plume-extractor</artifactId>
+        <version>X.X.X</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/plume-extractor-X.X.X.jar</systemPath>
+    </dependency>
+    ```
 
 ### General Dependencies
 
@@ -96,72 +95,71 @@ All Plume repositories make use of the following dependencies.
 Based on the storage backend being used, `plume-driver` will need to be paired with 
 the necessary dependencies required to communicate with the database.
 
-!!! example "Driver Dependencies"
-    === "TinkerGraph"
-        Gradle
-        ```groovy
-        dependencies {
-            implementation 'org.apache.tinkerpop:gremlin-core:3.4.6'
-            implementation 'org.apache.tinkerpop:tinkergraph-gremlin:3.4.6'
-        }
-        ```
-        Maven
-        ```mxml
-        <dependency>
-            <groupId>org.apache.tinkerpop</groupId>
-            <artifactId>gremlin-core</artifactId>
-            <version>3.4.8</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tinkerpop</groupId>
-            <artifactId>tinkergraph-gremlin</artifactId>
-            <version>3.4.8</version>
-        </dependency>
-        ```
+=== "TinkerGraph"
+    Gradle
+    ```groovy
+    dependencies {
+        implementation 'org.apache.tinkerpop:gremlin-core:3.4.6'
+        implementation 'org.apache.tinkerpop:tinkergraph-gremlin:3.4.6'
+    }
+    ```
+    Maven
+    ```mxml
+    <dependency>
+        <groupId>org.apache.tinkerpop</groupId>
+        <artifactId>gremlin-core</artifactId>
+        <version>3.4.8</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tinkerpop</groupId>
+        <artifactId>tinkergraph-gremlin</artifactId>
+        <version>3.4.8</version>
+    </dependency>
+    ```
 
-    === "JanusGraph"
-        Gradle
-        ```groovy
-        dependencies {
-            implementation 'org.apache.tinkerpop:gremlin-core:3.4.6'
-            implementation 'org.janusgraph:janusgraph-driver:0.5.2'
-        }
-        ```
-        Maven
-        ```mxml
-        <dependency>
-            <groupId>org.apache.tinkerpop</groupId>
-            <artifactId>gremlin-core</artifactId>
-            <version>3.4.8</version>
-        </dependency>
-        <dependency>
-            <groupId>org.janusgraph</groupId>
-            <artifactId>janusgraph-driver</artifactId>
-            <version>0.5.2</version>
-        </dependency>
-        ```
+=== "JanusGraph"
+    Gradle
+    ```groovy
+    dependencies {
+        implementation 'org.apache.tinkerpop:gremlin-core:3.4.6'
+        implementation 'org.janusgraph:janusgraph-driver:0.5.2'
+    }
+    ```
+    Maven
+    ```mxml
+    <dependency>
+        <groupId>org.apache.tinkerpop</groupId>
+        <artifactId>gremlin-core</artifactId>
+        <version>3.4.8</version>
+    </dependency>
+    <dependency>
+        <groupId>org.janusgraph</groupId>
+        <artifactId>janusgraph-driver</artifactId>
+        <version>0.5.2</version>
+    </dependency>
+    ```
 
-    === "TigerGraph"
-        Gradle
-        ```groovy
-        dependencies {
-            implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
-            implementation 'khttp:khttp:1.0.0'
-        }
-        ```
-        Maven
-        ```mxml
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.11.2</version>
-        </dependency>
-        <dependency>
-            <groupId>khttp</groupId>
-            <artifactId>khttp</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        ```
+=== "TigerGraph"
+    Gradle
+    ```groovy
+    dependencies {
+        implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
+        implementation 'khttp:khttp:1.0.0'
+    }
+    ```
+    Maven
+    ```mxml
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.11.2</version>
+    </dependency>
+    <dependency>
+        <groupId>khttp</groupId>
+        <artifactId>khttp</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+    ```
 
 ### Extractor Dependencies
 
