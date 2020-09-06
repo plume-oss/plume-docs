@@ -18,7 +18,7 @@ Since the property graph model is native to many popular graph database storage 
 
 By persisting the graph in the database, one can also store results from the analysis on the stored graph too. Examples of such analysis could be, by starting with a raw CPG, adding the dominator or data-flow edges to the graph or performing constant propagation. This allows for code optimization and the re-use of results.
 
-Some analysis could obfuscate the program when compared to the source code but many graph databases support multiple graphs and one could store snapshots before each analysis.
+Some analysis could further differentiate the program when compared to the source code but many graph databases support multiple graphs and one could store snapshots before each analysis.
 
 As one updates a part of the original code the whole graph does not need to be re-generated only the affected subgraph. This allows for successive analysis to be much faster and updates to be minor.
 
@@ -30,7 +30,15 @@ Plume is currently aiming to do just that but currently only supports Java 8+.
 
 # Schema
 
-## Traits
+The latest CPG schema as defined by ShiftLeft is extremely complex in the sense that there is a large number of unique vertex types and possible permutations of which edges may be permitted between different vertex types. To simplify this complexity, vertices are subdivided by base traits and inherit properties accordingly.
+
+## Base Traits
+
+![Base Traits](../assets/images/plume-basics/code-property-graph/traits.png){: align=right style="height:300px;width:400px" }
+
+A vertex can inherit either none or many base traits. Traits are created as abstract classes which are more formally described in the [KDoc](https://plume-oss.github.io/plume-driver/kotlindoc/za/ac/sun/plume/domain/models/). 
+
+Base traits can also inherit properties from one another e.g. a CFG Vertex inherits properties from the AST Vertex and Within Method base traits.
 
 ## Vertex Types
 
