@@ -12,20 +12,17 @@ Note that Plume is still under development and does not have an official release
 
 ## Benefits of using Plume
 
-Plume is an open-source, Kotlin project which provides a type-safe interface for interacting with the graph
-database based off of [ShiftLeft's](https://www.shiftleft.io/) (the primary maintainers of Fabian Yamaguchi's
+Plume is an open-source Kotlin project which provides a type-safe interface for interacting with a graph database constructed using [ShiftLeft's](https://www.shiftleft.io/) (the primary maintainers of Fabian Yamaguchi's
 [Joern](https://github.com/ShiftLeftSecurity/joern)) 
 [CPG schema](https://github.com/ShiftLeftSecurity/codepropertygraph/blob/master/codepropertygraph/src/main/resources/schemas/base.json).
-Plume is broken up into three sub-libraries so that a user can use whichever part is applicable and separate
-concerns e.g. separate the application which extracts the CPG vs the application that analyzes it. Since 
+Plume is subdivided into three sub-libraries so that a user can use whichever part is applicable and separate
+concerns e.g. separate the application which extracts the CPG from the application that analyses it. Since 
 Kotlin is interoperable with Java, one should not have any difficulty incorporating Plume in their Java projects.
 
-The idea of storing the CPG in a graph database is so that the analysis can be done incrementally (one does not
+The idea of storing the CPG in a graph database is motivated by the observation that this approach will allow the analysis to be done incrementally (one does not
 have to regenerate a graph everytime one wishes to perform analysis and results can be persisted), updates
-done partially (if one method changes, only that subtree is regenerated), and be scalable for extremely 
-large applications due to how the number of nodes and edges scale for the CPG. Plume supports multiple graph 
-databases to allow for a user to pick and choose based on their currrent stack or what kind of processing they
-require.
+done partially (if one method changes, only that subtree is regenerated), and be scalable for 
+large applications due to how the number of nodes and edges scale for the CPG. Plume supports multiple graph databases so that developers can select a graph database based on their software stack and processing requirements.
 
 ## General Plume Benefits
 
