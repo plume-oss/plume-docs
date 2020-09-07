@@ -27,19 +27,3 @@ As one updates a part of the original code the whole graph does not need to be r
 One major advantage of the concept of a CPG is that the projected graph is not language dependent. This allows for re-use of many types of analysis as the analysis is written for the graph and not a specific language.
 
 Plume is currently aiming to do just that but currently only supports Java 8+.
-
-# Schema
-
-The latest CPG schema as defined by ShiftLeft is extremely complex in the sense that there is a large number of unique vertex types and possible permutations of which edges may be permitted between different vertex types. To simplify this complexity, vertices are subdivided by base traits and inherit properties accordingly.
-
-## Base Traits
-
-![Base Traits](../assets/images/plume-basics/code-property-graph/traits.png){: align=right style="height:300px;width:400px" }
-
-A vertex can inherit either none or many base traits. Traits are created as abstract classes which are more formally described in the [KDoc](https://plume-oss.github.io/plume-driver/kotlindoc/za/ac/sun/plume/domain/models/). 
-
-Base traits can also inherit properties from one another e.g. a CFG Vertex inherits properties from the AST Vertex and Within Method base traits.
-
-## Vertex Types
-
-## Edge Types
