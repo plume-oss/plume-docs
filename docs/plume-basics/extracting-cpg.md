@@ -67,7 +67,7 @@ driver.use {
 
 ### Code Property Graph
 
-![Directory Graph](../assets/images/extracting-cpg/src-graph.png)
+![Directory Graph](../assets/images/plume-basics/extracting-cpg/src-graph.png)
 
 ## Extracting from a Class File
 
@@ -105,7 +105,7 @@ driver.use {
 
 ### Code Property Graph
 
-![Directory Graph](../assets/images/extracting-cpg/cls-graph.png)
+![Directory Graph](../assets/images/plume-basics/extracting-cpg/cls-graph.png)
 
 ## Extracting from a Directory
 
@@ -155,4 +155,4 @@ driver.use {
 
 ### Code Property Graph
 
-![Directory Graph](../assets/images/extracting-cpg/dir-graph.png)
+![Directory Graph](../assets/images/plume-basics/extracting-cpg/dir-graph.png)
