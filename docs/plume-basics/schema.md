@@ -42,3 +42,16 @@ Base traits can also inherit properties from one another e.g. a CFG Vertex inher
 | UNKNOWN | A language-specific node. | EXPRESSION |
 
 ## Edge Types
+
+| Edge Label | Description |
+|-|-|
+| AST | Syntax tree edge. |
+| CFG | Control flow edge. |
+| CAPTURED_BY | Connection between a captured LOCAL and the corresponding CLOSURE_BINDING. |
+| BINDS_TO | Type argument binding to a type parameter. |
+| REF | A reference to e.g. a LOCAL. |
+| RECEIVER | The receiver of a method call which is either an object or a pointer. |
+| CONDITION | Edge from control structure node to the expression that holds the condition. |
+| BINDS | Relation between TYPE_DECL and BINDING node. |
+| ARGUMENT | Relation between a CALL and its arguments and RETURN and the returned expression. |
+| SOURCE_FILE | Source file of a node, in which its LINE_NUMBER and COLUMN_NUMBER are valid. |
