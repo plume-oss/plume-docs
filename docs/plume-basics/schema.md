@@ -2,17 +2,49 @@
 
 _Last updated: 7 Sept 2020_
 
-The latest CPG schema as defined by ShiftLeft is extremely complex in the sense that there is a large number of unique vertex types and possible permutations of which edges may be permitted between different vertex types. To simplify this complexity, vertices are subdivided by base traits and inherit properties accordingly.
+The latest CPG schema as defined by ShiftLeft is extremely complex in the sense that there is a large number of unique vertex types and possible permutations of which edges may be permitted between different vertex types. To simplify this complexity, vertices are categorized and subdivided by base traits and may inherit properties accordingly.
 
 The original schema can be found [here](https://github.com/ShiftLeftSecurity/codepropertygraph/blob/master/codepropertygraph/src/main/resources/schemas/base.json).
 
-![Base Traits](../assets/images/plume-basics/code-property-graph/traits.png){: align=right style="height:300px;width:400px;" }
-
 ## Base Traits
+
+![Base Traits](../assets/images/plume-basics/code-property-graph/traits.png){: align=right style="height:300px;width:400px;" }
 
 A vertex can inherit either none or many base traits. Traits are created as abstract classes which are more formally described in the [KDoc](https://plume-oss.github.io/plume-driver/kotlindoc/za/ac/sun/plume/domain/models/). 
 
 Base traits can also inherit properties from one another e.g. a CFG Vertex inherits properties from the AST Vertex and Within Method base traits.
+
+### Declaration
+
+Declare a variable by specifying its data type and name. A property to inherit is _name_.
+
+### AST Vertex
+
+Any vertex that can exist in an abstract syntax tree. A property to inherit is _order_.
+
+### Within Method
+
+Any node that can exist in a method. No properties to inherit.
+
+### Local Like
+
+Formal input parameters, locals, and identifiers. A property to inherit is _name_.
+
+### CFG Vertex
+
+Any node that can occur as part of a control flow graph. Properties to inherit are _line number_, _column number_, and _code_.
+
+### Tracking Point
+
+Any node that can occur in a data flow. No properties to inherit.
+
+### Call Repr
+
+Call representation. Properties to inherit are _code_, _name_, and _signature_.
+
+### Expression
+
+Expression as a specialisation of tracking point. Properties to inherit are _code_, _order_, and _argument index_.
 
 ## Vertex Types
 
@@ -54,7 +86,7 @@ which vertices and their outgoing edges and vertex labels comply with the schema
 
 Syntax tree edge.
 
-| Source Vertex | Valid Target Vertices |
+| Source | Valid Target(s) |
 |-|-|
 | METHOD | METHOD_RETURN, METHOD_PARAMETER_IN, MODIFIER, BLOCK, TYPE_PARAMETER |
 | TYPE | TYPE_ARGUMENT |
@@ -71,7 +103,7 @@ Syntax tree edge.
 
 Control flow edge.
 
-| Source Vertex | Target Vertices |
+| Source | Target(s) |
 |-|-|
 | METHOD | CALL, IDENTIFIER, FIELD_IDENTIFIER, LITERAL, METHOD_REF, TYPE_REF, METHOD_RETURN, RETURN, BLOCK, JUMP_TARGET, CONTROL_STRUCTURE, UNKNOWN |
 | LITERAL | CALL, IDENTIFIER, FIELD_IDENTIFIER, LITERAL, METHOD_REF, TYPE_REF, RETURN, BLOCK, JUMP_TARGET, CONTROL_STRUCTURE, UNKNOWN |
@@ -90,7 +122,7 @@ Control flow edge.
 
 Connection between a captured LOCAL and the corresponding CLOSURE_BINDING.
 
-| Source Vertex | Target Vertices |
+| Source | Target(s) |
 |-|-|
 | LOCAL | BINDING |
 
@@ -98,7 +130,7 @@ Connection between a captured LOCAL and the corresponding CLOSURE_BINDING.
 
 Type argument binding to a type parameter.
 
-| Source Vertex | Target Vertices |
+| Source | Target(s) |
 |-|-|
 | TYPE_ARGUMENT | TYPE_PARAMETER |
 
@@ -106,7 +138,7 @@ Type argument binding to a type parameter.
 
 A reference to e.g. a LOCAL.
 
-| Source Vertex | Target Vertices |
+| Source | Target(s) |
 |-|-|
 | BINDING | METHOD |
 | TYPE_ARGUMENT | TYPE |
@@ -116,7 +148,7 @@ A reference to e.g. a LOCAL.
 
 The receiver of a method call which is either an object or a pointer.
 
-| Source Vertex | Target Vertices |
+| Source | Target(s) |
 |-|-|
 | CALL | CALL, IDENTIFIER, LITERAL, METHOD_REF, TYPE_REF, BLOCK, JUMP_TARGET, CONTROL_STRUCTURE, UNKNOWN |
 
@@ -124,7 +156,7 @@ The receiver of a method call which is either an object or a pointer.
 
 Edge from control structure vertex to the expression that holds the condition.
 
-| Source Vertex | Target Vertices |
+| Source | Target(s) |
 |-|-|
 | TYPE_REF | LITERAL, ARRAY_INITIALIZER, CALL, IDENTIFIER, RETURN, BLOCK, JUMP_TARGET, UNKNOWN, CONTROL_STRUCTURE, METHOD_REF, TYPE_REF |
 | CONTROL_STRUCTURE | LITERAL, ARRAY_INITIALIZER, CALL, IDENTIFIER, RETURN, BLOCK, JUMP_TARGET, UNKNOWN, CONTROL_STRUCTURE, METHOD_REF, TYPE_REF |
@@ -133,7 +165,7 @@ Edge from control structure vertex to the expression that holds the condition.
 
 Relation between TYPE_DECL and BINDING vertex.
 
-| Source Vertex | Target Vertices |
+| Source | Target(s) |
 |-|-|
 | TYPE_DECL | BINDING |
 
@@ -141,7 +173,7 @@ Relation between TYPE_DECL and BINDING vertex.
 
 Relation between a CALL and its arguments and RETURN and the returned expression.
 
-| Source Vertex | Target Vertices |
+| Source | Target(s) |
 |-|-|
 | CALL | CALL, IDENTIFIER, FIELD_IDENTIFIER, LITERAL, METHOD_REF, TYPE_REF, BLOCK, JUMP_TARGET, CONTROL_STRUCTURE, UNKNOWN |
 | RETURN | CALL, IDENTIFIER, LITERAL, METHOD_REF, TYPE_REF, RETURN, BLOCK, JUMP_TARGET, CONTROL_STRUCTURE, UNKNOWN |
@@ -150,6 +182,6 @@ Relation between a CALL and its arguments and RETURN and the returned expression
 
  Source file of a vertex, in which its LINE_NUMBER and COLUMN_NUMBER are valid.
 
-| Source Vertex | Target Vertices |
+| Source | Target(s) |
 |-|-|
 | METHOD | FILE |
