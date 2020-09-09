@@ -10,9 +10,9 @@ The extractor uses Soot in order to extract the code-property graph from JVM byt
 `IDriver` with which it will build the CPG and a `File` which acts as the target directory of the source files.
 
 ```kotlin
-// The driver is what the extractor is going to use to build the graph
-// with an determine which database is being written to
-val driver = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }
+// The driver is what the extractor is going to use to build the graph with an determine
+// which database is being written to. This will automatically connect in the extractor.
+val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
 // This will be the target directory at the base of the application to analyze
 val pathToClasses = File("build/resources/test")
 // The above to variables are the constructor arguments
@@ -22,9 +22,12 @@ val extractor = Extractor(driver, pathToClasses)
 Once we have a correctly configured driver, we can then load our classes:
 
 ```kotlin
-// Load files and add them to a queue
+// Load files and add them to the set of files
 extractor.load(File("File1.java"))
 extractor.load(File("File2.java"))
+// or
+listOf(File("File1.java"), File("File2.java")).forEach(extractor::load)
+
 // Project all loaded files a remove them from the queue
 extractor.project()
 ```
@@ -39,7 +42,7 @@ the installed JDK.
 ```kotlin
 val pathToClasses = File("build/resources/test")
 val targetFile = File("extractor_tests/Test1.java")
-val driver = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }
+val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
 driver.use {
     val extractor = Extractor(it, pathToClasses)
     extractor.load(targetFile)
@@ -77,7 +80,7 @@ then all variable names will use placeholder names. This is the case with the ex
 ```kotlin
 val pathToClasses = File("build/resources/test")
 val targetFile = File("extractor_tests/Test2.class")
-val driver = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }
+val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
 driver.use {
     val extractor = Extractor(it, pathToClasses)
     extractor.load(targetFile)
@@ -114,7 +117,7 @@ One can extract all source and class files from a given directory using `load()`
 ```kotlin
 val pathToClasses = File("build/resources/test")
 val targetDirectory = File("extractor_tests/dir_test")
-val driver = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }
+val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
 driver.use {
     val extractor = Extractor(it, pathToClasses)
     extractor.load(targetDirectory)

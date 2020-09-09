@@ -6,7 +6,13 @@
 
 The cycle of using Plume for static analysis starts with loading the program one wishes via the extractor.
 This assumes one has already decided on what [storage backend](../storage-backends/introduction.md) they wish to use.
-All source code for the example below with all supported storage backends can be found on the [examples repository](https://github.com/plume-oss/plume-examples) and the following tutorial is a simplied version of the `TinkerGraphApp` example.
+All source code for the example below with all supported storage backends can be found on the 
+[examples repository](https://github.com/plume-oss/plume-examples) and the following tutorial is a simplied
+version of the `TinkerGraphApp` example. 
+
+Plume is coded to be as platform independent as possible but the examples below are simplified to work only on Unix
+based systems for readability e.g. the use of forward-slashes when referencing the file system. If using Windows 
+replace all forward-slashes with back-slashes in the examples below or make use of `File.separator` constant.
 
 ## Setup and Configuration
 
@@ -37,7 +43,9 @@ rm -rf lib && mkdir -p lib && rm -rf ./tmp && mkdir -p ./tmp && cd ./tmp \
 
 ## Creating a driver
 
-Before we can extract our graph let's set up a simple in-memory driver.
+Before we can extract our graph let's set up a simple in-memory driver. Calling `.connect()` is 
+optional as the extractor will check if the driver is connected yet and, if not, will attempt to
+call `.connect()` itself.
 
 === "Java"
     ```java
@@ -48,7 +56,7 @@ Before we can extract our graph let's set up a simple in-memory driver.
     public class TinkerGraphApp {
         public static void main(String[] args) {
             TinkerGraphDriver driver = (TinkerGraphDriver) DriverFactory.invoke(GraphDatabase.TINKER_GRAPH);
-            driver.connect();
+            driver.connect(); // optional, but necessary if using the driver outside of the extractor
         }
     }
     ```
@@ -83,7 +91,6 @@ our `TinkerGraphApp` in a folder called `examples`.
     public class TinkerGraphApp {
         public static void main(String[] args) {
             TinkerGraphDriver driver = (TinkerGraphDriver) DriverFactory.invoke(GraphDatabase.TINKER_GRAPH);
-            driver.connect();
             Extractor extractor = new Extractor(driver, new File("./examples"));
         }
     }
@@ -98,7 +105,7 @@ our `TinkerGraphApp` in a folder called `examples`.
 
     class TinkerGraphApp {
         fun main(args : Array<String>) {
-            val driver = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }
+            val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
             val extractor = Extractor(driver, File("./examples"))
         }
     }
@@ -128,7 +135,9 @@ public class Basic1 {
 ```
 
 Now let's load the file and project it to the graph database. The `load()` function adds arguments
-to a queue and the `project()` function will project all loaded classes and clear the queue.
+to a set and the `project()` function will project all loaded classes and clear the set. Note
+that `load()` will throw exceptions if the given file does not exist or, in the case of a `.java` file,
+fails to compile.
 
 === "Java"
     ```java
@@ -158,3 +167,49 @@ With a bit of custom styling and using the `name` property as the displayed labe
 graph will look something like this:
 
 ![Basic Graph](../assets/images/getting-started/basic-graph.png)
+
+## Putting it all together
+
+Since the driver implements `AutoCloseable`, we can combine the code from above where the driver will 
+automatically connect via the extractor and close via the try-with-resources notation.
+
+=== "Java"
+    ```java
+    import za.ac.sun.plume.drivers.DriverFactory;
+    import za.ac.sun.plume.drivers.GraphDatabase;
+    import za.ac.sun.plume.drivers.TinkerGraphDriver;
+    import java.io.File;
+    import java.io.IOException;
+
+    public class TinkerGraphApp {
+        public static void main(String[] args) throws IOException {
+            try (TinkerGraphDriver driver = (TinkerGraphDriver) DriverFactory.invoke(GraphDatabase.TINKER_GRAPH)) {
+                Extractor extractor = new Extractor(driver, new File("./examples"));
+                File exampleFile = new File("./examples/intraprocedural/basic/Basic1.java");
+                extractor.load(exampleFile);
+                extractor.project();
+            }
+        }
+    }
+    ```
+
+=== "Kotlin"
+    ```kotlin
+    import za.ac.sun.plume.drivers.DriverFactory
+    import za.ac.sun.plume.drivers.GraphDatabase
+    import za.ac.sun.plume.drivers.TinkerGraphDriver
+    import java.io.File
+    import java.io.IOException
+
+    class TinkerGraphApp {
+        @Throws(IOException::class)
+        fun main(args: Array<String>) {
+            (DriverFactory.invoke(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).use { driver ->
+                val extractor = Extractor(driver, File("./examples"))
+                val exampleFile = File("./examples/intraprocedural/basic/Basic1.java")
+                extractor.load(exampleFile)
+                extractor.project()
+            }
+        }
+    }
+    ```
