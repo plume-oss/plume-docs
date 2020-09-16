@@ -24,6 +24,16 @@ have to regenerate a graph everytime one wishes to perform analysis and results 
 done partially (if one method changes, only that subtree is regenerated), and be scalable for 
 large applications due to how the number of nodes and edges scale for the CPG. Plume supports multiple graph databases so that developers can select a graph database based on their software stack and processing requirements.
 
+## Supported Languages
+Since Plume analyzes JVM bytecode, if a language is able to compile to JVM bytecode then Plume can accept it. Plume supports compiling the following
+languages to bytecode if loaded in automatically:
+
+* Java using the system's JDK
+* Python 2.7.2 using [Jython](https://www.jython.org/)
+* JavaScript 1.7 using [Mozilla Rhino](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino)
+
+Simply load the respective `.java`, `.py`, or `.js` files using the [extractor](./plume-basics/extracting-cpg.md) accordingly.
+
 ## General Plume Benefits
 
 * Choice of graph database: in-memory to dedicated, open-source to enterprise, single node to multi-machine clustered.
