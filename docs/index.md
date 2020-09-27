@@ -25,6 +25,7 @@ done partially (if one method changes, only that subtree is regenerated), and be
 large applications due to how the number of nodes and edges scale for the CPG. Plume supports multiple graph databases so that developers can select a graph database based on their software stack and processing requirements.
 
 ## Supported Languages
+
 Since Plume analyzes JVM bytecode, if a language is able to compile to JVM bytecode then Plume can accept it. Plume supports compiling the following
 languages to bytecode if loaded in automatically:
 
@@ -45,6 +46,14 @@ Simply load the respective `.java`, `.py`, or `.js` files using the [extractor](
 
 ## Plans for Plume
 
-* Extract an interprocedural CPG given JVM bytecode.
-* To perform alias-aware type-state analysis using [synchronized pushdown systems](https://scholar.google.com/scholar_url?url=https://dl.acm.org/doi/abs/10.1145/3290361&hl=en&sa=T&oi=gsb&ct=res&cd=0&d=15546365361660080180&ei=N5Q5X9XBF_SSy9YPxMG2yAE&scisig=AAGBfm3MtiLeyMfSj5gXy1bzeuLCewQ9-A). 
-* Solve IDFS or IDE problems.
+* Add interprocedurl edges
+* Include Neo4j
+* To perform alias-aware type-state analysis using [synchronized pushdown systems](https://scholar.google.com/scholar_url?url=https://dl.acm.org/doi/abs/10.1145/3290361&hl=en&sa=T&oi=gsb&ct=res&cd=0&d=15546365361660080180&ei=N5Q5X9XBF_SSy9YPxMG2yAE&scisig=AAGBfm3MtiLeyMfSj5gXy1bzeuLCewQ9-A)
+* Benchmark supported graph databases in terms of response times and resource consumption during analysis
+* Investigate soundness of analysis for dynamic vs static languages
+* Investigate the use of GCNNs for vulnerability detection
+
+## Where does the name come from?
+
+The word "plume" can describe a plume of smoke, dust, or fire rising into the air in a column in large quantities. Due to the fact that Plume leverages Soot to construct
+the code property graph, a colleague of mine, [Lauren Hayward](https://www.linkedin.com/in/lauren-hayward-8ba853199/), suggested it be called Plume as homage and so it was named. 
