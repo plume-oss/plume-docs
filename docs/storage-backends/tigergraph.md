@@ -45,3 +45,55 @@ TigerGraph is fast and efficient both in terms of storage and memory consumption
 
 - Enforced schema requires compulsory setup to use with Plume.
 - Requires a license for enterprise application.
+
+## TigerGraph Schema
+
+Due to pattern matching queries requiring knowledge of the edge type and the way edge restrictions work, there are
+only two vertex types. `META_DATA_VERT` contains language data and `CPG_VERT` represents all CPG vertices where 
+the Plume driver will use the `label` property to determine which of the other properties to serialize and use.
+
+```gsql
+# Vertices
+
+## Basic CPG vertex
+CREATE VERTEX CPG_VERT (
+    PRIMARY_ID id INT,
+    label STRING DEFAULT "UNKNOWN",
+    argumentIndex INT DEFAULT -1,
+    dispatchType STRING DEFAULT "STATIC_DISPATCH",
+    evaluationStrategy STRING DEFAULT "BY_REFERENCE",
+    methodFullName STRING DEFAULT "null",
+    methodInstFullName STRING DEFAULT "null",
+    typeFullName STRING DEFAULT "null",
+    typeDeclFullName STRING DEFAULT "null",
+    dynamicTypeHintFullName STRING DEFAULT "null",
+    code STRING DEFAULT "null",
+    columnNumber INT DEFAULT -1,
+    lineNumber INT DEFAULT -1,
+    name STRING DEFAULT "null",
+    fullName STRING DEFAULT "null",
+    canonicalName STRING DEFAULT "null",
+    astOrder INT DEFAULT -1,
+    signature STRING DEFAULT "()"
+)
+## Language Dependent
+CREATE VERTEX META_DATA_VERT (
+    PRIMARY_ID id INT,
+    label STRING DEFAULT "META_DATA",
+    language STRING DEFAULT "JAVA",
+    version STRING DEFAULT "1.8"
+)
+
+# Edges
+
+CREATE DIRECTED EDGE AST (FROM CPG_VERT, TO CPG_VERT)
+CREATE DIRECTED EDGE CFG (FROM CPG_VERT, TO CPG_VERT)
+CREATE DIRECTED EDGE CAPTURED_BY (FROM CPG_VERT, TO CPG_VERT)
+CREATE DIRECTED EDGE BINDS_TO (FROM CPG_VERT, TO CPG_VERT)
+CREATE DIRECTED EDGE REF (FROM CPG_VERT, TO CPG_VERT)
+CREATE DIRECTED EDGE RECEIVER (FROM CPG_VERT, TO CPG_VERT)
+CREATE DIRECTED EDGE CONDITION (FROM CPG_VERT, TO CPG_VERT)
+CREATE DIRECTED EDGE BINDS (FROM CPG_VERT, TO CPG_VERT)
+CREATE DIRECTED EDGE ARGUMENT (FROM CPG_VERT, TO CPG_VERT)
+CREATE DIRECTED EDGE SOURCE_FILE (FROM CPG_VERT, TO CPG_VERT)
+```

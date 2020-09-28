@@ -37,7 +37,7 @@ nav:
       - 'Architectural Overview': 'getting-started/architectural-overview.md'
   - 'Plume Basics':
       - 'Code Property Graph': 'plume-basics/code-property-graph.md'
-      - 'Schema': 'plume-basics/schema.md'
+      - 'Graph Schema': 'plume-basics/schema.md'
       - 'Using the Extractor': 'plume-basics/extracting-cpg.md'
   - 'Storage Backends':
       - 'Introduction': 'storage-backends/introduction.md'
