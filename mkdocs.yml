@@ -45,6 +45,7 @@ nav:
       - 'JanusGraph': 'storage-backends/janusgraph.md'
       - 'TigerGraph': 'storage-backends/tigergraph.md'
       - 'Amazon Neptune': 'storage-backends/neptune.md'
+      - 'Neo4j': 'storage-backends/neo4j.md'
   - 'KDoc API': 'kdoc.md'
 
 markdown_extensions:
