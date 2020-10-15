@@ -133,6 +133,7 @@ A reference to e.g. a LOCAL.
 | Source | Target(s) |
 |-|-|
 | BINDING | METHOD |
+| CALL | METHOD |
 | TYPE_ARGUMENT | TYPE |
 | IDENTIFIER | LOCAL, METHOD_PARAMETER_IN |
 
