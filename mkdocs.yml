@@ -39,6 +39,7 @@ nav:
       - 'Code Property Graph': 'plume-basics/code-property-graph.md'
       - 'Graph Schema': 'plume-basics/schema.md'
       - 'Using the Extractor': 'plume-basics/extracting-cpg.md'
+      - 'Understanding PlumeGraph': 'plume-basics/plume-graph.md'
   - 'Storage Backends':
       - 'Introduction': 'storage-backends/introduction.md'
       - 'TinkerGraph': 'storage-backends/tinkergraph.md'
