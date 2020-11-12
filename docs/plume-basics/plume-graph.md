@@ -15,8 +15,8 @@ The `PlumeGraph` object was designed for the following ideal use cases:
 * **CPG Specific Representation of Results**. The `PlumeGraph` object makes use of domain
     objects and thus provides a schema adherring representation of results.
 * **View-Model Ready Representation**. `PlumeGraph` provides an ideal representation of
-    results for visualization tools. There are plans for  `PlumeGraph` to be serializable to
-    XML and JSON representations.
+    results for visualization tools. `PlumeGraph` can be serialized to XML and JSON 
+    representations - see [PlumeGraph Serialization](graph-io.md).
 * **Ideal for Debugging and Validation**. `PlumeGraph` is great for making sure that the CPG
     graph in the database is valid and the result is as intended.
 * **Useful for Manual Graph Traversals**. When traversing paths and the graph, one could 
