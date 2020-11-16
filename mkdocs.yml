@@ -41,6 +41,8 @@ nav:
       - 'Using the Extractor': 'plume-basics/extracting-cpg.md'
       - 'Understanding PlumeGraph': 'plume-basics/plume-graph.md'
       - 'Serializing Results': 'plume-basics/graph-io.md'
+  - 'Configuration':
+      - 'Extractor Configuration': 'configuration/extractor-config.md'
   - 'Storage Backends':
       - 'Introduction': 'storage-backends/introduction.md'
       - 'TinkerGraph': 'storage-backends/tinkergraph.md'
