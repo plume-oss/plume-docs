@@ -46,8 +46,6 @@ Simply load the respective `.java`, `.py`, or `.js` files using the [extractor](
 
 ## Plans for Plume
 
-* Add interprocedurl edges
-* Include Neo4j
 * To perform alias-aware type-state analysis using [synchronized pushdown systems](https://scholar.google.com/scholar_url?url=https://dl.acm.org/doi/abs/10.1145/3290361&hl=en&sa=T&oi=gsb&ct=res&cd=0&d=15546365361660080180&ei=N5Q5X9XBF_SSy9YPxMG2yAE&scisig=AAGBfm3MtiLeyMfSj5gXy1bzeuLCewQ9-A)
 * Benchmark supported graph databases in terms of response times and resource consumption during analysis
 * Investigate soundness of analysis for dynamic vs static languages
