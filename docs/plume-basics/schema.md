@@ -1,6 +1,6 @@
 # Schema
 
-_Last updated: 7 Sept 2020_
+_Last updated: 30 Nov 2020_
 
 The latest CPG schema as defined by ShiftLeft is extremely complex in the sense that there is a large number of unique
 vertex types and possible permutations of which edges may be permitted between different vertex types. To simplify this
@@ -143,7 +143,7 @@ The receiver of a method call which is either an object or a pointer.
 
 | Source | Target(s) |
 |-|-|
-| CALL | CALL, IDENTIFIER, LITERAL, METHOD_REF, TYPE_REF, BLOCK, JUMP_TARGET, CONTROL_STRUCTURE, UNKNOWN |
+| CALL | CALL, IDENTIFIER, LITERAL, METHOD_REF, TYPE_REF, BLOCK, CONTROL_STRUCTURE, UNKNOWN |
 
 ### CONDITION
 

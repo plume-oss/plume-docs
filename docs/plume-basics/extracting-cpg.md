@@ -159,3 +159,20 @@ driver.use {
 ### Code Property Graph
 
 ![Directory Graph](../assets/images/plume-basics/extracting-cpg/dir-graph.png)
+
+## Updating the CPG
+
+If source code changes, one does not need to delete and regenerate the whole graph.
+`FileVertex` objects contain a hash of the file which generate that subgraph. If that
+same file is extracted and the hash differs from what is in the database, then that
+subgraph is dropped and the respective CPG is re-generated. If no hash change is detected 
+then nothing is extracted and the graph will remain the same.
+
+This hash is on source file level and not method level i.e. if one method changes then 
+everything from the parent source file is dropped and recreated.
+
+The hash used is XXH32 from [xxHash](http://cyan4973.github.io/xxHash/) which is a fast
+and non-cryptographic hash.
+
+In order to update the graph simply extract the changed source file over the graph
+database containing the existing CPG.
