@@ -12,9 +12,9 @@ a program.
 ## Driver
 
 The driver provides the interface via which one can communicate to a chosen graph database.
-This interface is defined by [`IDriver`](https://plume-oss.github.io/plume-driver/kotlindoc/za/ac/sun/plume/drivers/idriver/)
-and is what is implemented by the database drivers such as the [TinkerGraph driver](https://plume-oss.github.io/plume-driver/kotlindoc/za/ac/sun/plume/drivers/tinkergraphdriver/) 
-or [TigerGraph driver](https://plume-oss.github.io/plume-driver/kotlindoc/za/ac/sun/plume/drivers/tigergraphdriver/).
+This interface is defined by [`IDriver`](https://plume-oss.github.io/plume/kotlindoc/io/github/plume/oss/drivers/idriver/)
+and is what is implemented by the database drivers such as the [TinkerGraph driver](https://plume-oss.github.io/plume/kotlindoc/io/github/plume/oss/drivers/tinkergraphdriver/) 
+or [TigerGraph driver](https://plume-oss.github.io/plume/kotlindoc/io/github/plume/oss/drivers/tigergraphdriver/).
 
 ![Driver Architectural Overview](../assets/images/driver-overview.png)
 
@@ -25,7 +25,7 @@ the driver but we are continually looking at supporting more graph databases.
 ## Extractor
 
 The extractor is in charge of constructing the code property graph from bytecode. The entrypoint
-for this component is the [`Extractor`](https://plume-oss.github.io/plume-extractor/kotlindoc/za/ac/sun/plume/extractor/)
+for this component is the [`Extractor`](https://plume-oss.github.io/plume/kotlindoc/io/github/plume/oss/extractor/)
 class where one can load and project the CPG using the given driver and classpath. 
 
 Either source or class files can be loaded where source files will be compiled into class files.

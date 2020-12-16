@@ -12,28 +12,27 @@ Note that Plume is still under development and does not have an official release
 
 ## Benefits of using Plume
 
-Plume is an open-source Kotlin project which provides a type-safe interface for interacting with a graph database constructed using [ShiftLeft's](https://www.shiftleft.io/) (the primary maintainers of Fabian Yamaguchi's
-[Joern](https://github.com/ShiftLeftSecurity/joern)) 
+Plume is an open-source Kotlin project which provides a type-safe interface for interacting with a graph 
+database constructed using [ShiftLeft's](https://www.shiftleft.io/) (the primary maintainers of Fabian 
+Yamaguchi's [Joern](https://github.com/ShiftLeftSecurity/joern)) 
 [CPG schema](https://github.com/ShiftLeftSecurity/codepropertygraph/blob/master/codepropertygraph/src/main/resources/schemas/base.json).
-Plume is subdivided into three sub-libraries so that a user can use whichever part is applicable and separate
-concerns e.g. separate the application which extracts the CPG from the application that analyses it. Since 
-Kotlin is interoperable with Java, one should not have any difficulty incorporating Plume in their Java projects.
+Since Kotlin is interoperable with Java, one should not have any difficulty incorporating Plume in their
+Java projects.
 
-The idea of storing the CPG in a graph database is motivated by the observation that this approach will allow the analysis to be done incrementally (one does not
-have to regenerate a graph everytime one wishes to perform analysis and results can be persisted), updates
-done partially (if one method changes, only that subtree is regenerated), and be scalable for 
-large applications due to how the number of nodes and edges scale for the CPG. Plume supports multiple graph databases so that developers can select a graph database based on their software stack and processing requirements.
+The idea of storing the CPG in a graph database is motivated by the observation that this approach will
+allow the analysis to be done incrementally (one does not have to regenerate a graph everytime one wishes
+to perform analysis and results can be persisted), updates done partially (if one method changes, only
+that subtree is regenerated), and be scalable for large applications due to how the number of nodes and
+edges scale for the CPG. Plume supports multiple graph databases so that developers can select a graph 
+database based on their software stack and processing requirements.
 
 ## Supported Languages
 
-Since Plume analyzes JVM bytecode, if a language is able to compile to JVM bytecode then Plume can accept it. Plume supports compiling the following
-languages to bytecode if loaded in automatically:
+Since Plume analyzes JVM bytecode, if a language is able to compile to JVM bytecode then Plume can accept
+it. Plume supports compiling Java source code automatically.
 
-* Java using the system's JDK
-* Python 2.7.2 using [Jython](https://www.jython.org/)
-* JavaScript 1.7 using [Mozilla Rhino](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino)
-
-Simply load the respective `.java`, `.py`, or `.js` files using the [extractor](./plume-basics/extracting-cpg.md) accordingly.
+Simply load the respective `.java` or `.class` files using the [extractor](./plume-basics/extracting-cpg.md)
+accordingly.
 
 ## General Plume Benefits
 
@@ -53,5 +52,7 @@ Simply load the respective `.java`, `.py`, or `.js` files using the [extractor](
 
 ## Where does the name come from?
 
-The word "plume" can describe a plume of smoke, dust, or fire rising into the air in a column in large quantities. Due to the fact that Plume leverages Soot to construct
-the code property graph, a colleague of mine, [Lauren Hayward](https://www.linkedin.com/in/lauren-hayward-8ba853199/), suggested it be called Plume as homage and so it was named. 
+The word "plume" can describe a plume of smoke, dust, or fire rising into the air in a column in large quantities.
+Due to the fact that Plume leverages Soot to construct the code property graph, a colleague of mine,
+[Lauren Hayward](https://www.linkedin.com/in/lauren-hayward-8ba853199/), suggested it be called Plume as homage 
+and so it was named. 

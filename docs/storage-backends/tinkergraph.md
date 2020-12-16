@@ -9,7 +9,7 @@ TinkerGraph is a lightweight, POJO based, in-memory property graph that serves a
 
 ## Driver Configuration and Usage
 
-TinkerGraph is Plume's in-memory storage backend option which can be obtained as follows:
+TinkerGraph is an in-memory storage backend option which can be obtained as follows:
 ```kotlin
 val driver = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }
 ```
@@ -29,7 +29,7 @@ The data held in this graph will be deleted upon the termination of the applicat
 
 The in-memory graph database option is used primarily for testing and graph exploration. TinkerGraph can be paired with a graph visualizer such as Cytoscape as it recognized GraphML. This is the recommended backend to get familiar with Plume and how it works as it is also the simplest to configure.
 
-The extractor's unit tests all make use of the TinkerGraph configuration for fast testing on low resource TravisCI runners.
+The extractor's unit tests all make use of the TinkerGraph configuration for fast testing on low resource CI/CD runners.
 
 ### Production
 

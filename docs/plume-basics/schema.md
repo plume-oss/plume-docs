@@ -1,6 +1,6 @@
 # Schema
 
-_Last updated: 30 Nov 2020_
+_Last updated: 15 Dec 2020_
 
 The latest CPG schema as defined by ShiftLeft is extremely complex in the sense that there is a large number of unique
 vertex types and possible permutations of which edges may be permitted between different vertex types. To simplify this
@@ -133,7 +133,6 @@ A reference to e.g. a LOCAL.
 | Source | Target(s) |
 |-|-|
 | BINDING | METHOD |
-| CALL | METHOD |
 | TYPE_ARGUMENT | TYPE |
 | IDENTIFIER | LOCAL, METHOD_PARAMETER_IN |
 
@@ -178,6 +177,14 @@ Source file of a vertex, in which its LINE_NUMBER and COLUMN_NUMBER are valid.
 | Source | Target(s) |
 |-|-|
 | METHOD | FILE |
+
+### CALL
+
+Method invocation edge - caller/callee relationship.
+
+| Source | Target(s) |
+|-|-|
+| CALL | METHOD |
 
 ## Program Categories
 

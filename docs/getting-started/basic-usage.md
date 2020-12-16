@@ -16,29 +16,41 @@ replace all forward-slashes with back-slashes in the examples below or make use 
 
 ## Setup and Configuration
 
-To start, simply setup a Maven or Gradle project and [adding all the necessary dependencies](dependencies.md).
+To start, simply setup a Maven or Gradle project and [adding all the necessary dependencies](dependencies.md). Plume
+can be pulled from JCenter as follows:
+
+Remember to change `X.X.X` to [![Download](https://api.bintray.com/packages/plume-oss/maven/plume/images/download.svg){: style="height:20px;width:40px;margin-bottom:-5px;object-fit:cover;object-position: 100% 0;" }](https://bintray.com/plume-oss/maven/plume/_latestVersion)
+
+=== "Maven"
+    ```mxml
+    <dependency>
+        <groupId>io.github.plume-oss</groupId>
+        <artifactId>plume</artifactId>
+        <version>X.X.X</version>
+        <type>pom</type>
+    </dependency>
+    ```
+
+=== "Gradle"
+    ```groovy
+    implementation 'io.github.plume-oss:plume:X.X.X'
+    ```
+
 The Plume libraries can be obtained by running the following convience script which obtains the bleeding edge version
 of the driver and extractor:
 
 ```bash
 #!/bin/bash
 
-# Download latest stable Plume libraries from the develop branches
+# Download latest stable Plume libraries
 rm -rf lib && mkdir -p lib && rm -rf ./tmp && mkdir -p ./tmp && cd ./tmp \
   && git init \
-  && git remote add origin https://github.com/plume-oss/plume-driver.git \
+  && git remote add origin https://github.com/plume-oss/plume.git \
   && git fetch --depth 1 origin develop \
   && git reset --hard FETCH_HEAD \
-  && ./gradlew jar \
-  && mv ./build/libs/plume-driver-X.X.X.jar ../lib/plume-driver-X.X.X.jar \
-  && cd .. && rm -rf ./tmp && mkdir -p ./tmp && cd ./tmp \
-  && git init \
-  && git remote add origin https://github.com/plume-oss/plume-extractor.git \
-  && git fetch --depth 1 origin develop \
-  && git reset --hard FETCH_HEAD \
-  && ./gradlew jar \
-  && mv ./build/libs/plume-extractor-X.X.X.jar ../lib/plume-extractor-X.X.X.jar \
-  && cd .. && rm -rf ./tmp \
+  && ./gradlew oneJar \
+  && mv ./build/libs/plume-X.X.X.jar ../lib/plume-X.X.X.jar \
+  && cd .. && rm -rf ./tmp
 ```
 
 ## Creating a driver
@@ -49,9 +61,9 @@ call `.connect()` itself.
 
 === "Java"
     ```java
-    import za.ac.sun.plume.drivers.DriverFactory;
-    import za.ac.sun.plume.drivers.GraphDatabase;
-    import za.ac.sun.plume.drivers.TinkerGraphDriver;
+    import io.github.plume.oss.drivers.DriverFactory;
+    import io.github.plume.oss.drivers.GraphDatabase;
+    import io.github.plume.oss.drivers.TinkerGraphDriver;
 
     public class TinkerGraphApp {
         public static void main(String[] args) {
@@ -63,9 +75,9 @@ call `.connect()` itself.
 
 === "Kotlin"
     ```kotlin
-    import za.ac.sun.plume.drivers.DriverFactory
-    import za.ac.sun.plume.drivers.GraphDatabase
-    import za.ac.sun.plume.drivers.TinkerGraphDriver
+    import io.github.plume.oss.drivers.DriverFactory
+    import io.github.plume.oss.drivers.GraphDatabase
+    import io.github.plume.oss.drivers.TinkerGraphDriver
 
     class TinkerGraphApp {
         fun main(args : Array<String>) {
@@ -83,30 +95,30 @@ our `TinkerGraphApp` in a folder called `examples`.
 
 === "Java"
     ```java
-    import za.ac.sun.plume.Extractor;
-    import za.ac.sun.plume.drivers.DriverFactory;
-    import za.ac.sun.plume.drivers.GraphDatabase;
-    import za.ac.sun.plume.drivers.TinkerGraphDriver;
+    import io.github.plume.oss.Extractor;
+    import io.github.plume.oss.drivers.DriverFactory;
+    import io.github.plume.oss.drivers.GraphDatabase;
+    import io.github.plume.oss.drivers.TinkerGraphDriver;
 
     public class TinkerGraphApp {
         public static void main(String[] args) {
             TinkerGraphDriver driver = (TinkerGraphDriver) DriverFactory.invoke(GraphDatabase.TINKER_GRAPH);
-            Extractor extractor = new Extractor(driver, new File("./examples"));
+            Extractor extractor = new Extractor(driver);
         }
     }
     ```
 
 === "Kotlin"
     ```kotlin
-    import za.ac.sun.plume.Extractor
-    import za.ac.sun.plume.drivers.DriverFactory
-    import za.ac.sun.plume.drivers.GraphDatabase
-    import za.ac.sun.plume.drivers.TinkerGraphDriver
+    import io.github.plume.oss.Extractor
+    import io.github.plume.oss.drivers.DriverFactory
+    import io.github.plume.oss.drivers.GraphDatabase
+    import io.github.plume.oss.drivers.TinkerGraphDriver
 
     class TinkerGraphApp {
         fun main(args : Array<String>) {
             val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
-            val extractor = Extractor(driver, File("./examples"))
+            val extractor = Extractor(driver)
         }
     }
     ```
@@ -175,16 +187,16 @@ automatically connect via the extractor and close via the try-with-resources not
 
 === "Java"
     ```java
-    import za.ac.sun.plume.drivers.DriverFactory;
-    import za.ac.sun.plume.drivers.GraphDatabase;
-    import za.ac.sun.plume.drivers.TinkerGraphDriver;
+    import io.github.plume.oss.drivers.DriverFactory;
+    import io.github.plume.oss.drivers.GraphDatabase;
+    import io.github.plume.oss.drivers.TinkerGraphDriver;
     import java.io.File;
     import java.io.IOException;
 
     public class TinkerGraphApp {
         public static void main(String[] args) throws IOException {
             try (TinkerGraphDriver driver = (TinkerGraphDriver) DriverFactory.invoke(GraphDatabase.TINKER_GRAPH)) {
-                Extractor extractor = new Extractor(driver, new File("./examples"));
+                Extractor extractor = new Extractor(driver);
                 File exampleFile = new File("./examples/intraprocedural/basic/Basic1.java");
                 extractor.load(exampleFile);
                 extractor.project();
@@ -195,9 +207,9 @@ automatically connect via the extractor and close via the try-with-resources not
 
 === "Kotlin"
     ```kotlin
-    import za.ac.sun.plume.drivers.DriverFactory
-    import za.ac.sun.plume.drivers.GraphDatabase
-    import za.ac.sun.plume.drivers.TinkerGraphDriver
+    import io.github.plume.oss.drivers.DriverFactory
+    import io.github.plume.oss.drivers.GraphDatabase
+    import io.github.plume.oss.drivers.TinkerGraphDriver
     import java.io.File
     import java.io.IOException
 
@@ -205,7 +217,7 @@ automatically connect via the extractor and close via the try-with-resources not
         @Throws(IOException::class)
         fun main(args: Array<String>) {
             (DriverFactory.invoke(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).use { driver ->
-                val extractor = Extractor(driver, File("./examples"))
+                val extractor = Extractor(driver)
                 val exampleFile = File("./examples/intraprocedural/basic/Basic1.java")
                 extractor.load(exampleFile)
                 extractor.project()

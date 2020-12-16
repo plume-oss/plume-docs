@@ -64,6 +64,28 @@ the necessary dependencies required to communicate with the database.
     </dependency>
     ```
 
+=== "OverflowDB"
+    Gradle
+    ```groovy
+    dependencies {
+        implementation 'io.shiftleft:codepropertygraph_2.13:1.3.6'
+        implementation 'io.shiftleft:semanticcpg_2.13:1.3.6'
+    }
+    ```
+    Maven
+    ```mxml
+    <dependency>
+        <groupId>io.shiftleft</groupId>
+        <artifactId>codepropertygraph_2.13</artifactId>
+        <version>1.3.6</version>
+    </dependency>
+    <dependency>
+        <groupId>io.shiftleft</groupId>
+        <artifactId>semanticcpg_2.13</artifactId>
+        <version>1.3.6</version>
+    </dependency>
+    ```
+
 === "JanusGraph"
     Gradle
     ```groovy
@@ -158,15 +180,9 @@ These dependencies used for extracting the CPG from JVM bytecode.
 
 === "Gradle"
     ```groovy
-    repositories {
-        mavenCentral()
-        flatDir {
-            dirs 'lib'
-        }
-    }
     dependencies {
         implementation 'org.soot-oss:soot:4.2.1'
-        implementation name: 'plume-driver-X.X.X'
+        implementation 'org.lz4:lz4-java:1.7.1'
     }
     ```
 === "Maven"
@@ -177,10 +193,8 @@ These dependencies used for extracting the CPG from JVM bytecode.
         <version>4.2.1</version>
     </dependency>
     <dependency>
-        <groupId>za.ac.sun.plume</groupId>
-        <artifactId>plume-driver</artifactId>
-        <version>X.X.X</version>
-        <scope>system</scope>
-        <systemPath>${project.basedir}/lib/plume-driver-X.X.X.jar</systemPath>
+        <groupId>org.lz4</groupId>
+        <artifactId>lz4-java</artifactId>
+        <version>1.7.1</version>
     </dependency>
     ```

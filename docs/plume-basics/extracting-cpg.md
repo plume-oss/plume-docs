@@ -13,10 +13,8 @@ The extractor uses Soot in order to extract the code-property graph from JVM byt
 // The driver is what the extractor is going to use to build the graph with an determine
 // which database is being written to. This will automatically connect in the extractor.
 val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
-// This will be the target directory at the base of the application to analyze
-val pathToClasses = File("build/resources/test")
 // The above to variables are the constructor arguments
-val extractor = Extractor(driver, pathToClasses)
+val extractor = Extractor(driver)
 ```
 
 Once we have a correctly configured driver, we can then load our classes:
@@ -40,11 +38,10 @@ One can extract a CPG from a source file using `load()`. The class file is then 
 the installed JDK.
 
 ```kotlin
-val pathToClasses = File("build/resources/test")
 val targetFile = File("extractor_tests/Test1.java")
 val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
 driver.use {
-    val extractor = Extractor(it, pathToClasses)
+    val extractor = Extractor(it)
     extractor.load(targetFile)
     extractor.project()
     it.exportGraph("graph.xml")
@@ -78,11 +75,10 @@ One can extract a CPG from a class file using `load()`. If the class file is com
 then all variable names will use placeholder names. This is the case with the example below.
 
 ```kotlin
-val pathToClasses = File("build/resources/test")
 val targetFile = File("extractor_tests/Test2.class")
 val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
 driver.use {
-    val extractor = Extractor(it, pathToClasses)
+    val extractor = Extractor(it)
     extractor.load(targetFile)
     extractor.project()
     it.exportGraph("graph.xml")
@@ -115,11 +111,10 @@ driver.use {
 One can extract all source and class files from a given directory using `load()`.
 
 ```kotlin
-val pathToClasses = File("build/resources/test")
 val targetDirectory = File("extractor_tests/dir_test")
 val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
 driver.use {
-    val extractor = Extractor(it, pathToClasses)
+    val extractor = Extractor(it)
     extractor.load(targetDirectory)
     extractor.project()
     it.exportGraph("graph.xml")
