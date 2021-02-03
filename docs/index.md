@@ -16,7 +16,7 @@ The latest release of Plume is [![Download](https://api.bintray.com/packages/plu
 Plume is an open-source Kotlin project which provides a type-safe interface for interacting with a graph 
 database constructed using [ShiftLeft's](https://www.shiftleft.io/) (the primary maintainers of Fabian 
 Yamaguchi's [Joern](https://github.com/ShiftLeftSecurity/joern)) 
-[CPG schema](https://github.com/ShiftLeftSecurity/codepropertygraph/blob/master/codepropertygraph/src/main/resources/schemas/base.json).
+[CPG schema](https://github.com/ShiftLeftSecurity/codepropertygraph/blob/master/schema/src/main/resources/schemas/base.json).
 Since Kotlin is interoperable with Java, one should not have any difficulty incorporating Plume in their
 Java projects.
 
