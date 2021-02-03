@@ -21,9 +21,9 @@ theme:
   language: 'en'
   name: material
   palette:
-    scheme: slate
-    primary: cyan
-    accent: deep orange
+    scheme: default
+    primary: indigo
+    accent: purple
   logo: assets/images/logo-white.png
   favicon: assets/images/logo.png
   icon:

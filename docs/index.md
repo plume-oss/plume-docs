@@ -2,13 +2,14 @@
 
 ## What is Plume?
 
-Plume is a static analysis library supported by a graph database backend. Given an application compiled to 
-JVM bytecode, the library will analyze the bytecode using a call graph produced using [Soot](https://soot-oss.github.io/soot).
-This call graph is then converted into what is called a [code-property graph](https://scholar.google.com/scholar_url?url=https://ieeexplore.ieee.org/abstract/document/6956589/&hl=en&sa=T&oi=gsb&ct=res&cd=0&d=12886570087564421680&ei=b405X9CuKqiBy9YP_Y27yAc&scisig=AAGBfm3j_-cCDAxDL775VnqZMs9K7suiYw) which is simply a combination of an abstract syntax tree (AST),
+Plume is a **JVM bytecode** to **code property graph** library supported by a **graph database** storage backend.
+Given an application compiled to JVM bytecode, the library will analyze the bytecode using a call graph produced
+using [Soot](https://soot-oss.github.io/soot). This call graph is then converted into what is called a
+[code property graph](https://scholar.google.com/scholar_url?url=https://ieeexplore.ieee.org/abstract/document/6956589/&hl=en&sa=T&oi=gsb&ct=res&cd=0&d=12886570087564421680&ei=b405X9CuKqiBy9YP_Y27yAc&scisig=AAGBfm3j_-cCDAxDL775VnqZMs9K7suiYw) which, at the base level, is simply a combination of an abstract syntax tree (AST),
 control flow graph (CFG), and program dependence graph (PDG). This three part graph is then persisted in a 
-supported graph database and can be queried and analyzed via the library or queried against the database natively.
+supported graph database and can be queried and analyzed via tools such as [Joern](https://joern.io/).
 
-Note that Plume is still under development and does not have an official release yet.
+The latest release of Plume is [![Download](https://api.bintray.com/packages/plume-oss/maven/plume/images/download.svg){: style="height:20px;width:40px;margin-bottom:-5px;object-fit:cover;object-position: 100% 0;" }](https://bintray.com/plume-oss/maven/plume/_latestVersion).
 
 ## Benefits of using Plume
 
@@ -26,6 +27,9 @@ that subtree is regenerated), and be scalable for large applications due to how 
 edges scale for the CPG. Plume supports multiple graph databases so that developers can select a graph 
 database based on their software stack and processing requirements.
 
+Plume provides JVM bytecode support for the Joern project which means that one can use Joern to perform
+analysis on Plume generated CPGs.
+
 ## Supported Languages
 
 Since Plume analyzes JVM bytecode, if a language is able to compile to JVM bytecode then Plume can accept
@@ -37,18 +41,11 @@ accordingly.
 ## General Plume Benefits
 
 * Choice of graph database: in-memory to dedicated, open-source to enterprise, single node to multi-machine clustered.
-* CPG schema strictly enforced in the Plume driver.
+* CPG schema strictly enforced in the Plume driver using [codepropertygraph](https://github.com/ShiftLeftSecurity/codepropertygraph) domain classes.
 * Handles very large code property graphs.
 * Analysis can be done incrementally.
 * Simple to use interface.
 * Open source under the liberal [Apache 2 license](https://en.wikipedia.org/wiki/Apache_License).
-
-## Plans for Plume
-
-* To perform alias-aware type-state analysis using [synchronized pushdown systems](https://scholar.google.com/scholar_url?url=https://dl.acm.org/doi/abs/10.1145/3290361&hl=en&sa=T&oi=gsb&ct=res&cd=0&d=15546365361660080180&ei=N5Q5X9XBF_SSy9YPxMG2yAE&scisig=AAGBfm3MtiLeyMfSj5gXy1bzeuLCewQ9-A)
-* Benchmark supported graph databases in terms of response times and resource consumption during analysis
-* Investigate soundness of analysis for dynamic vs static languages
-* Investigate the use of GCNNs for vulnerability detection
 
 ## Where does the name come from?
 

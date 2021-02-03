@@ -1,5 +1,8 @@
 # Dependencies
 
+For version numbers, consult Plume's `gradle.properties` file
+[here](https://github.com/plume-oss/plume/blob/develop/gradle.properties).
+
 ## Core Dependencies
 
 These dependencies cover what Plume needs before extraction and database communcation
@@ -7,10 +10,12 @@ These dependencies cover what Plume needs before extraction and database communc
 === "Gradle"
     ```groovy
     dependencies {
-        implementation 'org.apache.logging.log4j:log4j-core:2.8.2 '
-        implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.8.2'
-        implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72'
-        implementation 'org.jetbrains.kotlin:kotlin-reflect:1.3.72'
+        implementation 'org.apache.logging.log4j:log4j-core'
+        implementation 'org.apache.logging.log4j:log4j-slf4j-impl'
+        implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+        implementation 'org.jetbrains.kotlin:kotlin-reflect'
+        implementation "io.shiftleft:codepropertygraph_2.13"
+        implementation "io.shiftleft:semanticcpg_2.13:"
     }
     ```
 === "Maven"
@@ -18,36 +23,41 @@ These dependencies cover what Plume needs before extraction and database communc
     <dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-core</artifactId>
-        <version>2.8.2</version>
     </dependency>
     <dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-slf4j-impl</artifactId>
-        <version>2.8.2</version>
     </dependency>
     <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-stdlib-jdk8</artifactId>
-        <version>1.3.72</version>
     </dependency>
     <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-reflect</artifactId>
-        <version>1.3.72</version>
+    </dependency>
+    <dependency>
+        <groupId>io.shiftleft</groupId>
+        <artifactId>codepropertygraph_2.13</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.shiftleft</groupId>
+        <artifactId>codepropertygraph_2.13</artifactId>
     </dependency>
     ```
 
 ## Driver Dependencies
 
 Based on the storage backend being used, `IDriver` classes will need to be paired with 
-the necessary dependencies required to communicate with the database.
+the necessary dependencies required to communicate with the database. OverflowDB is
+inherently supported since it is a core dependency used as a cache for subgraph processing.
 
 === "TinkerGraph"
     Gradle
     ```groovy
     dependencies {
-        implementation 'org.apache.tinkerpop:gremlin-core:3.4.8'
-        implementation 'org.apache.tinkerpop:tinkergraph-gremlin:3.4.8'
+        implementation 'org.apache.tinkerpop:gremlin-core'
+        implementation 'org.apache.tinkerpop:tinkergraph-gremlin'
     }
     ```
     Maven
@@ -55,34 +65,10 @@ the necessary dependencies required to communicate with the database.
     <dependency>
         <groupId>org.apache.tinkerpop</groupId>
         <artifactId>gremlin-core</artifactId>
-        <version>3.4.8</version>
     </dependency>
     <dependency>
         <groupId>org.apache.tinkerpop</groupId>
         <artifactId>tinkergraph-gremlin</artifactId>
-        <version>3.4.8</version>
-    </dependency>
-    ```
-
-=== "OverflowDB"
-    Gradle
-    ```groovy
-    dependencies {
-        implementation 'io.shiftleft:codepropertygraph_2.13:1.3.6'
-        implementation 'io.shiftleft:semanticcpg_2.13:1.3.6'
-    }
-    ```
-    Maven
-    ```mxml
-    <dependency>
-        <groupId>io.shiftleft</groupId>
-        <artifactId>codepropertygraph_2.13</artifactId>
-        <version>1.3.6</version>
-    </dependency>
-    <dependency>
-        <groupId>io.shiftleft</groupId>
-        <artifactId>semanticcpg_2.13</artifactId>
-        <version>1.3.6</version>
     </dependency>
     ```
 
@@ -90,8 +76,8 @@ the necessary dependencies required to communicate with the database.
     Gradle
     ```groovy
     dependencies {
-        implementation 'org.apache.tinkerpop:gremlin-core:3.4.8'
-        implementation 'org.janusgraph:janusgraph-driver:0.5.2'
+        implementation 'org.apache.tinkerpop:gremlin-core'
+        implementation 'org.janusgraph:janusgraph-driver'
     }
     ```
     Maven
@@ -99,12 +85,10 @@ the necessary dependencies required to communicate with the database.
     <dependency>
         <groupId>org.apache.tinkerpop</groupId>
         <artifactId>gremlin-core</artifactId>
-        <version>3.4.8</version>
     </dependency>
     <dependency>
         <groupId>org.janusgraph</groupId>
         <artifactId>janusgraph-driver</artifactId>
-        <version>0.5.2</version>
     </dependency>
     ```
 
@@ -112,8 +96,8 @@ the necessary dependencies required to communicate with the database.
     Gradle
     ```groovy
     dependencies {
-        implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.0'
-        implementation 'khttp:khttp:1.0.0'
+        implementation 'com.fasterxml.jackson.core:jackson-databind'
+        implementation 'khttp:khttp'
     }
     ```
     Maven
@@ -121,12 +105,10 @@ the necessary dependencies required to communicate with the database.
     <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>2.12.0</version>
     </dependency>
     <dependency>
         <groupId>khttp</groupId>
         <artifactId>khttp</artifactId>
-        <version>1.0.0</version>
     </dependency>
     ```
 
@@ -134,8 +116,8 @@ the necessary dependencies required to communicate with the database.
     Gradle
     ```groovy
     dependencies {
-        implementation "org.apache.tinkerpop:gremlin-core:3.4.8"
-        implementation "org.apache.tinkerpop:gremlin-driver:3.4.8"
+        implementation "org.apache.tinkerpop:gremlin-core"
+        implementation "org.apache.tinkerpop:gremlin-driver"
     }
     ```
     Maven
@@ -143,12 +125,10 @@ the necessary dependencies required to communicate with the database.
     <dependency>
         <groupId>org.apache.tinkerpop</groupId>
         <artifactId>gremlin-core</artifactId>
-        <version>3.4.8</version>
     </dependency>
     <dependency>
         <groupId>org.apache.tinkerpop</groupId>
         <artifactId>gremlin-driver</artifactId>
-        <version>3.4.8</version>
     </dependency>
     ```
 
@@ -156,21 +136,14 @@ the necessary dependencies required to communicate with the database.
     Gradle
     ```groovy
     dependencies {
-        implementation "org.apache.tinkerpop:gremlin-core:3.4.8"
-        implementation "com.steelbridgelabs.oss:neo4j-gremlin-bolt:0.4.5"
+        implementation "org.neo4j.driver:neo4j-java-driver"
     }
     ```
     Maven
     ```mxml
     <dependency>
-        <groupId>org.apache.tinkerpop</groupId>
-        <artifactId>gremlin-core</artifactId>
-        <version>3.4.8</version>
-    </dependency>
-    <dependency>
-        <groupId>com.steelbridgelabs.oss</groupId>
-        <artifactId>neo4j-gremlin-bolt</artifactId>
-        <version>0.4.5</version>
+        <groupId>org.neo4j.driver</groupId>
+        <artifactId>neo4j-java-driver</artifactId>
     </dependency>
     ```
 
@@ -181,8 +154,8 @@ These dependencies used for extracting the CPG from JVM bytecode.
 === "Gradle"
     ```groovy
     dependencies {
-        implementation 'org.soot-oss:soot:4.2.1'
-        implementation 'org.lz4:lz4-java:1.7.1'
+        implementation 'org.soot-oss:soot'
+        implementation 'org.lz4:lz4-java'
     }
     ```
 === "Maven"
@@ -190,11 +163,9 @@ These dependencies used for extracting the CPG from JVM bytecode.
     <dependency>
         <groupId>org.soot-oss</groupId>
         <artifactId>soot</artifactId>
-        <version>4.2.1</version>
     </dependency>
     <dependency>
         <groupId>org.lz4</groupId>
         <artifactId>lz4-java</artifactId>
-        <version>1.7.1</version>
     </dependency>
     ```

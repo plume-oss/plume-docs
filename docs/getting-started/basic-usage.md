@@ -1,18 +1,19 @@
 # Basic Usage
 
-![Basic Process](../assets/images/basic-process.png){: align=right style="height:450px;width:280px" }
+![Basic Process](../assets/images/getting-started/basic-process.png){: align=right style="height:450px;width:280px" }
 
 ## Introduction
 
-The cycle of using Plume for static analysis starts with loading the program one wishes via the extractor.
-This assumes one has already decided on what [storage backend](../storage-backends/introduction.md) they wish to use.
+The cycle of using Plume for static analysis starts with loading the target program via the extractor.
+This assumes one has already decided on what [storage backend](../storage-backends/introduction.md) one wishes to use.
 All source code for the example below with all supported storage backends can be found on the 
 [examples repository](https://github.com/plume-oss/plume-examples) and the following tutorial is a simplied
 version of the `TinkerGraphApp` example. 
 
 Plume is coded to be as platform independent as possible but the examples below are simplified to work only on Unix
-based systems for readability e.g. the use of forward-slashes when referencing the file system. If using Windows 
-replace all forward-slashes with back-slashes in the examples below or make use of `File.separator` constant.
+based systems for readability e.g. the use of forward-slashes when referencing the file system. 
+
+If using Windows, replace all forward-slashes with back-slashes in the examples below or make use of `File.separator` constant.
 
 ## Setup and Configuration
 
@@ -36,8 +37,7 @@ Remember to change `X.X.X` to [![Download](https://api.bintray.com/packages/plum
     implementation 'io.github.plume-oss:plume:X.X.X'
     ```
 
-The Plume libraries can be obtained by running the following convience script which obtains the bleeding edge version
-of the driver and extractor:
+The Plume libraries can be obtained by running the following convience script which obtains the bleeding edge version:
 
 ```bash
 #!/bin/bash
@@ -175,7 +175,7 @@ example we will export the graph in GraphML format so that it can be visualized 
 driver.exportGraph("./graph.xml");
 ```
 
-With a bit of custom styling and using the `name` property as the displayed label for vertices and edges our
+With a bit of custom styling and using the `labelV` property as the displayed label for vertices and edges our
 graph will look something like this:
 
 ![Basic Graph](../assets/images/getting-started/basic-graph.png)
