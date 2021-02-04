@@ -6,10 +6,8 @@
 >
 >  —  [Neo4j Homepage](https://neo4j.com/)
 
-Neo4j is a schema-less graph database written in Java with a simple query language called [Cypher](https://neo4j.com/developer/cypher/guide-sql-to-cypher/) 
-which is queried either via a transactional HTTP endpoint or through the Bolt protocol. Although Cypher is the primary query language, there is a Neo4j
-Gremlin driver that also communicates over the Bolt protocol developed by [SteelBridge Laboratories](https://steelbridgelabs.com/) which is what Plume 
-uses to query Neo4j. 
+Neo4j is a schema-less graph database written in Java with a simple query language called [Cypher](https://neo4j.com/developer/cypher/guide-sql-to-cypher/) which is queried either via a transactional HTTP endpoint or through the Bolt protocol. Plume queries Neo4j
+via Cypher over the Bolt protocol.
 
 ## Driver Configuration and Usage
 
@@ -24,21 +22,8 @@ val driver = (DriverFactory(GraphDatabase.NEO4J) as Neo4jDriver).apply {
     }
 ```
 
-The driver makes use of the SteelBridgeLabs [Gremlin Bolt driver](https://github.com/SteelBridgeLabs/neo4j-gremlin-bolt) which is wrapped around the official
-[Neo4j Java driver](https://github.com/neo4j/neo4j-java-driver). As described by the Gremlin driver's README, the following are the pros and cons of using the 
+The driver makes use of the official [Neo4j Java driver](https://github.com/neo4j/neo4j-java-driver). As described by the Gremlin driver's README, the following are the pros and cons of using the 
 Gremlin driver over the Cypher one:
-
-Pros:
-
-* IDs are stored as `java.lang.Long` instances.
-* Fewer database hits on `MATCH` statements since index lookups are not required at the time of locating an entity by id: `MATCH (n:Label) WHERE ID(n) = {id} RETURN n`
-
-Cons:
-
-* `CREATE` statements will run slower since the entity id must be retrieved from the database after insertion: `CREATE (n:label{field1: value, ..., fieldN: valueN}) RETURN ID(n)`
-* Entity IDs in Neo4J are not guaranteed to be the same after a database restart/upgrade. Storing links to Neo4J entities outside the database based on IDs could become invalid after a database restart/upgrade.
-
-Due to the last point, vertex ID's are stored on a shadow ID property called `id` instead of the native property `T.id`.
 
 ## Ideal Use Case
 
@@ -54,7 +39,6 @@ large code property graphs.
 
 The following benefits are obtained from the Neptune homepage:
 
-- Supports querying via Cypher and Gremlin. Cypher can be queried via REST.
 - Supports clustering with master-slave topology.
 - High read and write performance while maintaining data integrity with concurrent transaction support.
 - Scalable architecture optimized for response times and ACID (Atomicity, Consistency, Isolation, Durability) compliant. Supports transactions and locking.

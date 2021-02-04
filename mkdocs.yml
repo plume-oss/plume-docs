@@ -22,8 +22,8 @@ theme:
   name: material
   palette:
     scheme: default
-    primary: indigo
-    accent: purple
+    primary: cyan
+    accent: deep orange
   logo: assets/images/logo-white.png
   favicon: assets/images/logo.png
   icon:
@@ -37,9 +37,8 @@ nav:
       - 'Architectural Overview': 'getting-started/architectural-overview.md'
   - 'Plume Basics':
       - 'Code Property Graph': 'plume-basics/code-property-graph.md'
-      - 'Graph Schema': 'plume-basics/schema.md'
       - 'Using the Extractor': 'plume-basics/extracting-cpg.md'
-      - 'Understanding PlumeGraph': 'plume-basics/plume-graph.md'
+      - 'Obtaining Results': 'plume-basics/obtaining-results.md'
       - 'Serializing Results': 'plume-basics/graph-io.md'
   - 'Configuration':
       - 'Extractor Configuration': 'configuration/extractor-config.md'

@@ -1,10 +1,16 @@
 # The Code Property Graph
 
-The inventor of the [code property graph](https://fabs.codeminers.org/papers/2014-ieeesp.pdf) and Chief Scientist at ShiftLeft, Fabian Yamaguchi, explains that the code property graph is a concept based on a simple observation: there are many different graph representations of code, and patterns in code can often be expressed as patterns in these graphs. 
+The inventor of the [code property graph](https://fabs.codeminers.org/papers/2014-ieeesp.pdf) and Chief Scientist at 
+ShiftLeft, Fabian Yamaguchi, explains that the code property graph is a concept based on a simple observation: there
+are many different graph representations of code, and patterns in code can often be expressed as patterns in these graphs. 
 
-This schema is now primarily maintained by ShiftLeft and can be viewed on [GitHub](https://github.com/ShiftLeftSecurity/codepropertygraph/blob/master/codepropertygraph/src/main/resources/schemas/base.json). Early implementations of this schema were seen on Neo4j and ShiftLeft's fork of TinkerGraph which has now diverged significantly and known as [OverflowDB](https://github.com/ShiftLeftSecurity/overflowdb).
+This schema is now primarily maintained by ShiftLeft and can be viewed on 
+[GitHub](https://github.com/ShiftLeftSecurity/codepropertygraph/blob/master/schema/src/main/resources/schemas/base.json).
+Early implementations of this schema were seen on Neo4j and ShiftLeft's fork of TinkerGraph which has now diverged 
+significantly and known as [OverflowDB](https://github.com/ShiftLeftSecurity/overflowdb).
 
-Plume makes use of the concept of the code property graph but is not limited to the original schema. This is enforced by interacting with the storage layer using the driver.
+Plume makes use of the concept of the code property graph and this is enforced by interacting with the storage layer 
+using the driver.
 
 ## Understanding the Code Property Graph
 

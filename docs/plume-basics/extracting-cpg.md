@@ -32,13 +32,14 @@ extractor.project()
 
 Once `project()` is called, all loaded classes will be projected to the storage backend as defined by the given `IDriver`.
 
-## Extracting from a Source File
+## Extracting from a Source or Class File
 
-One can extract a CPG from a source file using `load()`. The class file is then compiled from the source file using
-the installed JDK.
+One can extract a CPG from a source or class file using `load()`. If using a source file, the class file is then compiled
+from the source file using the installed JDK. If the class file is compiled without debugging info (`-g` flag)
+then all variable names will use placeholder names.
 
 ```kotlin
-val targetFile = File("extractor_tests/Test1.java")
+val targetFile = File("extractor_tests/Test1.java") # or Test1.class
 val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
 driver.use {
     val extractor = Extractor(it)
@@ -68,43 +69,6 @@ driver.use {
 ### Code Property Graph
 
 ![Directory Graph](../assets/images/plume-basics/extracting-cpg/src-graph.png)
-
-## Extracting from a Class File
-
-One can extract a CPG from a class file using `load()`. If the class file is compiled without debugging info (`-g` flag)
-then all variable names will use placeholder names. This is the case with the example below.
-
-```kotlin
-val targetFile = File("extractor_tests/Test2.class")
-val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
-driver.use {
-    val extractor = Extractor(it)
-    extractor.load(targetFile)
-    extractor.project()
-    it.exportGraph("graph.xml")
-}
-```
-
-### Source Code
-
-=== "extractor_tests/Test2.class"
-    ```java
-    package extractor_tests;
-
-    public class Test2 {
-
-        public static void main(String[] args) {
-            int a = 3;
-            int b = 2;
-            int c = a - b;
-        }
-
-    }
-    ```
-
-### Code Property Graph
-
-![Directory Graph](../assets/images/plume-basics/extracting-cpg/cls-graph.png)
 
 ## Extracting from a Directory
 

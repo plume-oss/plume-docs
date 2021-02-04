@@ -1,8 +1,8 @@
-# PlumeGraph Serialization
+# OverflowDB Graph Serialization
 
-The `PlumeGraph` object can be exported to XML and JSON representations for
-easy visualization and allows the `PlumeGraph` object to be imported into a
-TinkerGraph backend.
+The `Graph` object can be exported to XML and JSON representations for
+easy visualization and allows the `Graph` object to be imported into a
+TinkerGraph or OverflowDB backend.
 
 ## GraphML
 
@@ -12,18 +12,18 @@ representing various graph formats and is readily able to be visualized by
 
 === "Java"
     ```java
-    PlumeGraph graph = driver.getWholeGraph();
-    OutputStreamWriter writer = new FileWriter("Plume_Graph.xml");
+    Graph g = driver.getWholeGraph();
+    OutputStreamWriter writer = new FileWriter("graph.xml");
     // The OutputStreamWriter will be opened and closed in the write method
-    GraphMLWriter.INSTANCE.write(graph, writer);
+    GraphMLWriter.INSTANCE.write(g, writer);
     ```
 
 === "Kotlin"
     ```kotlin
-    val graph = driver.getWholeGraph()
-    val writer = new FileWriter("Plume_Graph.xml")
+    val g = driver.getWholeGraph()
+    val writer = new FileWriter("graph.xml")
     // The OutputStreamWriter will be opened and closed in the write method
-    GraphMLWriter.write(graph, writer)
+    GraphMLWriter.write(g, writer)
     ```
 
 ## GraphSON
@@ -34,18 +34,18 @@ ecosystem. Example:
 
 === "Java"
     ```java
-    PlumeGraph graph = driver.getWholeGraph();
-    OutputStreamWriter writer = new FileWriter("Plume_Graph.json");
+    Graph g = driver.getWholeGraph();
+    OutputStreamWriter writer = new FileWriter("graph.json");
     // The OutputStreamWriter will be opened and closed in the write method
-    GraphSONWriter.INSTANCE.write(graph, writer);
+    GraphSONWriter.INSTANCE.write(g, writer);
     ```
 
 === "Kotlin"
     ```kotlin
-    val graph = driver.getWholeGraph()
-    val writer = new FileWriter("Plume_Graph.json")
+    val g = driver.getWholeGraph()
+    val writer = new FileWriter("graph.json")
     // The OutputStreamWriter will be opened and closed in the write method
-    GraphSONWriter.write(graph, writer)
+    GraphSONWriter.write(g, writer)
     ```
 ## Importing Results
 
@@ -56,9 +56,11 @@ illustrates this:
 ```kotlin
 val d1 = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }
 val d2 = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }
-d1.importGraph("Plume_Graph.xml")
-d2.importGraph("Plume_Graph.json")
-assertEquals(d1.getWholeGraph(), d2.getWholeGraph())
-d1.close()
-d2.close()
+d1.importGraph("graph.xml")
+d2.importGraph("graph.json")
+g1 = d1.getWholeGraph()
+g2 = d2.getWholeGraph())
+assertEquals(g1.nodes().asSequence().toSet(), g2.nodes().asSequence().toSet())
+assertEquals(g1.edges().asSequence().toSet(), g2.edges().asSequence().toSet())
+g1.close(); g2.close(); d1.close(); d2.close()
 ```
