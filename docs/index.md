@@ -9,7 +9,7 @@ using [Soot](https://soot-oss.github.io/soot). This call graph is then converted
 control flow graph (CFG), and program dependence graph (PDG). This three part graph is then persisted in a 
 supported graph database and can be queried and analyzed via tools such as [Joern](https://joern.io/).
 
-The latest release of Plume is [![Download](https://api.bintray.com/packages/plume-oss/maven/plume/images/download.svg){: style="height:20px;width:40px;margin-bottom:-5px;object-fit:cover;object-position: 100% 0;" }](https://bintray.com/plume-oss/maven/plume/_latestVersion).
+The latest release of Plume is [![Download](https://jitpack.io/v/plume-oss/plume.svg){: style="height:20px;width:40px;margin-bottom:-5px;object-fit:cover;object-position: 100% 0;" }](https://jitpack.io/#plume-oss/plume).
 
 ## Benefits of using Plume
 

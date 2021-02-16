@@ -20,7 +20,7 @@ If using Windows, replace all forward-slashes with back-slashes in the examples 
 To start, simply setup a Maven or Gradle project and [adding all the necessary dependencies](dependencies.md). Plume
 can be pulled from JCenter as follows:
 
-Remember to change `X.X.X` to [![Download](https://api.bintray.com/packages/plume-oss/maven/plume/images/download.svg){: style="height:20px;width:40px;margin-bottom:-5px;object-fit:cover;object-position: 100% 0;" }](https://bintray.com/plume-oss/maven/plume/_latestVersion)
+Remember to change `X.X.X` to [![Download](https://jitpack.io/v/plume-oss/plume.svg){: style="height:20px;width:40px;margin-bottom:-5px;object-fit:cover;object-position: 100% 0;" }](https://jitpack.io/#plume-oss/plume)
 
 === "Maven"
     ```mxml
