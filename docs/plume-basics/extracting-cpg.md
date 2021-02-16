@@ -72,10 +72,12 @@ driver.use {
 
 ## Extracting from a Directory
 
-One can extract all source and class files from a given directory using `load()`.
+One can extract all source and class files from a given directory using `load()`. The
+same is applicable with a JAR file as it will simply be unzipped to a temporary directory
+where all supported files will be loaded from.
 
 ```kotlin
-val targetDirectory = File("extractor_tests/dir_test")
+val targetDirectory = File("extractor_tests/dir_test") # or /path/to/target/file.jar
 val driver = DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver
 driver.use {
     val extractor = Extractor(it)

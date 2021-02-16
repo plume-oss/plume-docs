@@ -35,8 +35,8 @@ analysis on Plume generated CPGs.
 Since Plume analyzes JVM bytecode, if a language is able to compile to JVM bytecode then Plume can accept
 it. Plume supports compiling Java source code automatically.
 
-Simply load the respective `.java` or `.class` files using the [extractor](./plume-basics/extracting-cpg.md)
-accordingly.
+Simply load the respective `.java` or `.class` files (or a directory or JAR file containing either) using the
+[extractor](./plume-basics/extracting-cpg.md) accordingly.
 
 ## General Plume Benefits
 
