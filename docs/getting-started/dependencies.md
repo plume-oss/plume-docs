@@ -10,12 +10,10 @@ These dependencies cover what Plume needs before extraction and database communc
 === "Gradle"
     ```groovy
     dependencies {
-        implementation 'org.apache.logging.log4j:log4j-core'
-        implementation 'org.apache.logging.log4j:log4j-slf4j-impl'
         implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
         implementation 'org.jetbrains.kotlin:kotlin-reflect'
-        implementation "io.shiftleft:codepropertygraph_2.13"
-        implementation "io.shiftleft:semanticcpg_2.13:"
+        implementation 'io.shiftleft:codepropertygraph_2.13'
+        implementation 'io.shiftleft:semanticcpg_2.13'
     }
     ```
 === "Maven"
