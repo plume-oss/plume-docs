@@ -18,3 +18,17 @@ To run development server, use:
 ```bash
 mkdocs serve
 ```
+
+## Contributing
+
+The only thing to note is that lines are wrapped at 100. This can be configured in VSCode by 
+installing the Rewrap plugin and adding the following configuration:
+
+```json
+{
+    "[markdown]": {
+        "editor.rulers": [100]
+    },
+    "rewrap.autoWrap.enabled": true,
+}
+```

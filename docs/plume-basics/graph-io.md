@@ -1,14 +1,12 @@
 # OverflowDB Graph Serialization
 
-The `Graph` object can be exported to XML and JSON representations for
-easy visualization and allows the `Graph` object to be imported into a
-TinkerGraph or OverflowDB backend.
+The `Graph` object can be exported to XML and JSON representations for easy visualization and allows
+the `Graph` object to be imported into a TinkerGraph or OverflowDB backend.
 
 ## GraphML
 
-[GraphML](http://graphml.graphdrawing.org/) is an XML-based format for
-representing various graph formats and is readily able to be visualized by
-[Cytoscape](https://cytoscape.org/). Example:
+[GraphML](http://graphml.graphdrawing.org/) is an XML-based format for representing various graph
+formats and is readily able to be visualized by [Cytoscape](https://cytoscape.org/). Example:
 
 === "Java"
     ```java
@@ -28,9 +26,8 @@ representing various graph formats and is readily able to be visualized by
 
 ## GraphSON
 
-[GraphSON](https://tinkerpop.apache.org/docs/current/reference/#graphson) 
-is an JSON-based format with usage aimed to be used in the TinkerGraph
-ecosystem. Example:
+[GraphSON](https://tinkerpop.apache.org/docs/current/reference/#graphson) is an JSON-based format
+with usage aimed to be used in the TinkerGraph ecosystem. Example:
 
 === "Java"
     ```java
@@ -49,9 +46,8 @@ ecosystem. Example:
     ```
 ## Importing Results
 
-Both GraphML and GraphJSON format can readily be imported into a `TinkerGraphDriver`
-using the `TinkerGraphDriver::importGraph` method. The following Kotlin example
-illustrates this:
+Both GraphML and GraphJSON format can readily be imported into a `TinkerGraphDriver` using the
+`TinkerGraphDriver::importGraph` method. The following Kotlin example illustrates this:
 
 ```kotlin
 val d1 = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }

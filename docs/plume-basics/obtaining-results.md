@@ -6,10 +6,9 @@ results in the form of the `Graph` object.
 
 ## Example
 
-Let us refer back to the basic graph produced by the source code example, `Test1.java`, in 
-[Using the Extractor](extracting-cpg.md). We can create a `Graph` representation of this
-result by calling the `IDriver::getWholeGraph` method on the driver connected to the 
-underlying graph database:
+Let us refer back to the basic graph produced by the source code example, `Test1.java`, in [Using
+the Extractor](extracting-cpg.md). We can create a `Graph` representation of this result by calling
+the `IDriver::getWholeGraph` method on the driver connected to the underlying graph database:
 
 ```kotlin
 >>> val g = driver.getWholeGraph()
@@ -17,9 +16,9 @@ underlying graph database:
 Graph [35 nodes]
 ```
 
-We can do this easily as `Test1.java` is a very small program. The edges are mapped by edge 
-label keys whose values are maps of source vertex keys with their target vertices as a set. 
-Let us find the main vertex and obtain its neighbouring vertices:
+We can do this easily as `Test1.java` is a very small program. The edges are mapped by edge label
+keys whose values are maps of source vertex keys with their target vertices as a set. Let us find
+the main vertex and obtain its neighbouring vertices:
 
 ```kotlin
 >>> val mainMethodV = g.nodes().asSequence()

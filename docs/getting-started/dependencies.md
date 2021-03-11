@@ -5,7 +5,8 @@ For version numbers, consult Plume's `gradle.properties` file
 
 ## Core Dependencies
 
-These dependencies cover what Plume needs before extraction and database communcation
+These dependencies cover what Plume needs before extraction and
+database communcation
 
 === "Gradle"
     ```groovy
@@ -46,9 +47,9 @@ These dependencies cover what Plume needs before extraction and database communc
 
 ## Driver Dependencies
 
-Based on the storage backend being used, `IDriver` classes will need to be paired with 
-the necessary dependencies required to communicate with the database. OverflowDB is
-inherently supported since it is a core dependency used as a cache for subgraph processing.
+Based on the storage backend being used, `IDriver` classes will need to be paired with the necessary
+dependencies required to communicate with the database. OverflowDB is inherently supported since it
+is a core dependency used as a cache for subgraph processing.
 
 === "TinkerGraph"
     Gradle
