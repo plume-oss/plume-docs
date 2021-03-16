@@ -40,6 +40,7 @@ nav:
       - 'Using the Extractor': 'plume-basics/extracting-cpg.md'
       - 'Obtaining Results': 'plume-basics/obtaining-results.md'
       - 'Serializing Results': 'plume-basics/graph-io.md'
+      - 'Metrics': 'plume-basics/metrics.md'
   - 'Configuration':
       - 'Extractor Configuration': 'configuration/extractor-config.md'
   - 'Storage Backends':

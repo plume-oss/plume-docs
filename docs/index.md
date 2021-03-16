@@ -1,4 +1,4 @@
-![Plume Banner](../assets/images/logo-text.png){: style="margin-left: 20%; margin-right: auto; width:60%" }
+![Plume Banner](./assets/images/logo-text.png){: style="margin-left: 20%; margin-right: auto; width:60%" }
 
 # Introduction
 
