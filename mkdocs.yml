@@ -40,8 +40,10 @@ nav:
       - 'Using the Extractor': 'plume-basics/extracting-cpg.md'
       - 'Obtaining Results': 'plume-basics/obtaining-results.md'
       - 'Serializing Results': 'plume-basics/graph-io.md'
+      - 'Incremental Updates': 'plume-basics/incremental.md'
       - 'Metrics': 'plume-basics/metrics.md'
   - 'Configuration':
+      - 'Cache Configuration': 'configuration/cache-config.md'
       - 'Extractor Configuration': 'configuration/extractor-config.md'
   - 'Storage Backends':
       - 'Introduction': 'storage-backends/introduction.md'

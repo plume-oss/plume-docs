@@ -2,7 +2,7 @@
 
 The extractor has options to configure how the graph is generated. This should be configured before
 `Extractor::project()` is called to have an effect. These options are configured via the
-`ExtractorOptions` class.
+`io.github.plume.oss.options.ExtractorOptions` class.
 
 ## Call Graph Configuration Options
 

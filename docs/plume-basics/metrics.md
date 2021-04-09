@@ -28,4 +28,4 @@ recorded times:
 
 `PlumeTimer::getTimes` returns `Map<ExtractorTimeKey, Long>` where the values are in nanoseconds.
 Note all timer information is initialized at runtime and will record all Plume operations throughout
-the lifecycle of the application. To reset the timers one can call `PluemTimer::reset`.
+the lifecycle of the application. To reset the timers one can call `PlumeTimer::reset`.
