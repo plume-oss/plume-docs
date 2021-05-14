@@ -57,6 +57,7 @@ nav:
 
 markdown_extensions:
   - attr_list
+  - pymdownx.tilde
   - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.snippets
