@@ -67,10 +67,6 @@ accordingly.
 * Open source under the liberal [Apache 2
   license](https://en.wikipedia.org/wiki/Apache_License).
 
-## Sponsored by
-
-![Amazon Science](https://assets.amazon.science/dims4/default/ce84994/2147483647/strip/true/crop/1200x630+0+0/resize/1200x630!/quality/90/?url=http%3A%2F%2Famazon-topics-brightspot.s3.amazonaws.com%2Fscience%2F32%2F80%2Fc230480c4f60a534bc077755bae7%2Famazon-science-og-image-squid.png)
-
 ## Roadmap
 
 1. ~~Able to project JVM bytecode to CPG~~
@@ -79,6 +75,10 @@ accordingly.
 1. ~~Implement change detection and incremental analysis~~
 1. Benchmark and prove most efficient/fastest/cheapest storage backend
 1. Perform overhaul around best storage backend for optimized performance
+
+## Sponsored by
+
+![Amazon Science](https://assets.amazon.science/dims4/default/ce84994/2147483647/strip/true/crop/1200x630+0+0/resize/1200x630!/quality/90/?url=http%3A%2F%2Famazon-topics-brightspot.s3.amazonaws.com%2Fscience%2F32%2F80%2Fc230480c4f60a534bc077755bae7%2Famazon-science-og-image-squid.png)
 
 ## Where does the name come from?
 
