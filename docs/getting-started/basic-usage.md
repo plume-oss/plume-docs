@@ -181,8 +181,8 @@ example we will export the graph in GraphML format so that it can be visualized 
 driver.exportGraph("./graph.xml");
 ```
 
-With a bit of custom styling and using the `labelV` property as the displayed label for vertices and
-edges our graph will look something like this:
+With a bit of custom styling, filtering, and using the `labelV` property as the displayed label for vertices and
+edges our graph will look something like this (albeit it will be much more complex):
 
 ![Basic Graph](../assets/images/getting-started/basic-graph.png)
 
