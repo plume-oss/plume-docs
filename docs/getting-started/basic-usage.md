@@ -1,6 +1,6 @@
 # Basic Usage
 
-![Basic Process](../assets/images/getting-started/basic-process.png){: align=right style="height:450px;width:280px" }
+![Basic Process](../assets/images/getting-started/basic-process.png){: align=right style="height:400px;width:400px" }
 
 ## Introduction
 
