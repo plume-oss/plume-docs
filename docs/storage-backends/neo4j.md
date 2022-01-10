@@ -16,14 +16,19 @@ Bolt protocol.
 ## Driver Configuration and Usage
 
 Neo4j's driver can be created as follows:
-```kotlin
-val driver = (DriverFactory(GraphDatabase.NEO4J) as Neo4jDriver).apply { 
-        hostname("127.0.0.1")
-            .port(7687)
-            .username("neo4j")
-            .password("neo4j123")
-            .database("neo4j")
-    }
+```scala
+val driver = new Neo4jDriver(
+      hostname = "localhost",
+      port = 7474,
+      username = "neo4j",
+      password = "neo4j"
+    )
+```
+
+One can optionally load indices with a call to:
+
+```scala
+driver.buildSchema()
 ```
 
 The driver makes use of the official [Neo4j Java

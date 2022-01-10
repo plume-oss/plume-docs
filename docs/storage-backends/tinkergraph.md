@@ -15,21 +15,16 @@ require greater resources.
 ## Driver Configuration and Usage
 
 TinkerGraph is an in-memory storage backend option which can be obtained as follows:
-```kotlin
-val driver = (DriverFactory(GraphDatabase.TINKER_GRAPH) as TinkerGraphDriver).apply { connect() }
+```scala
+val driver = new TinkerGraphDriver()
 ```
 On construction the following configuration is automatically added to the `BaseConfiguration` object:
-```kotlin
+```scala
 config.setProperty("gremlin.graph", "org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph")
 ```
-To add more configurations, simply use the `addConfig(key: String, value: String)` method of the
-`TinkerGraphDriver`.
 
 No additional configuration is typically required as the graph is held in memory in the heap space
-allocated to the Java Virtual Machine running the application making use of the Plume library. To
-instantiate the graph, use the `connect()` method which will create an instance of a TinkerGraph
-database using the stored configuration. The `close()` method can be used to tear down the graph and
-all resources consumed by it.
+allocated to the Java Virtual Machine running the application making use of the Plume library.
 
 The data held in this graph will be deleted upon the termination of the application or process using
 Plume but this graph can be imported and exported to XML, JSON, or Kryo using the
@@ -43,9 +38,6 @@ The in-memory graph database option is used primarily for testing and graph expl
 can be paired with a graph visualizer such as Cytoscape as it recognized GraphML. This is the
 recommended backend to get familiar with Plume and how it works as it is also the simplest to
 configure.
-
-The extractor's unit tests all make use of the TinkerGraph configuration for fast testing on low
-resource CI/CD runners.
 
 ### Production
 

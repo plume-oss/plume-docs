@@ -19,15 +19,12 @@ Neptune cluster. More on this can be found on the
 ## Driver Configuration and Usage
 
 Neptune's driver can be created as follows:
-```kotlin
-val driver = (DriverFactory(GraphDatabase.NEPTUNE) as NeptuneDriver).apply { 
-        addHostnames("<cluster hostnames here>")
-            .port(8182)
-            .keyCertChainFile("src/test/resources/conf/SFSRootCAG2.pem")
-            .idStorageLocation("/tmp/plume/")
-            .clearOnConnect(false)
-            .connect()
-    }
+```scala
+val driver = new NeptuneDriver(
+      hostname = "<neptune-cluster-address-without-https>",
+      port = 8182,
+      keyCertChainFile = "<pem-certificate-path-here>"
+    )
 ```
 
 The driver provides a wrapper over the
@@ -39,21 +36,10 @@ automatically set to true where the default port is 8182 if not specified. When
 using Neptune outside of production the `keyCertChainFile` need not be
 specified.
 
-**Note**: `idStorageLocation` is a parameter which will default to current
-working directory if not set. This is the location where Plume will store the
-mapping between Neptune and Plume's IDs. Neptune only uses `String` ID types
-with the default being `UUID`. Plume uses `Long` as this is fast and commonly
-supported by the other graph databases. As hacky as this is - this has minimal
-performance impact for a small cost to memory.
-
 Neptune has a bulk delete feature which is used when `clearGraph` is called and
 there are more than 100,000 nodes in the graph. This will take a minute or two
 but is much faster than the normal `g.V().drop().iterate()` especially when you
-find yourself with a graph of over a million vertices. If the driver cannot find
-existing IDs from an existing mapping file then Plume will iterate through all
-the vertices that exist within the graph to rebuild a mapping. This can
-potentially take very long and, if you would like to start from an empty
-database on connect, then set `.clearOnConnect(true)`.
+find yourself with a graph of over a million vertices.
 
 ## Ideal Use Case
 

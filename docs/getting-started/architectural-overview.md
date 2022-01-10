@@ -8,11 +8,11 @@ distributed between different parts of a program.
 
 The driver provides the interface via which one can communicate to a chosen graph database. This
 interface is defined by
-[`IDriver`](https://plume-oss.github.io/plume/kotlindoc/io/github/plume/oss/drivers/idriver/) and is
+[`IDriver`](https://plume-oss.github.io/plume/latest/api/com/github/plume/oss/drivers/IDriver.html) and is
 what is implemented by the database drivers such as the [TinkerGraph
-driver](https://plume-oss.github.io/plume/kotlindoc/io/github/plume/oss/drivers/tinkergraphdriver/)
+driver](https://plume-oss.github.io/plume/latest/api/com/github/plume/oss/drivers/TinkerGraphDriver.html)
 or [TigerGraph
-driver](https://plume-oss.github.io/plume/kotlindoc/io/github/plume/oss/drivers/tigergraphdriver/).
+driver](https://plume-oss.github.io/plume/latest/api/com/github/plume/oss/drivers/TigerGraphDriver.html).
 
 ![Driver Architectural Overview](../assets/images/getting-started/driver-overview.png)
 
@@ -24,14 +24,15 @@ databases supported by the driver but we are continually looking at supporting m
 
 The extractor is in charge of constructing the code property graph from bytecode. The entrypoint for
 this component is the
-[`Extractor`](https://plume-oss.github.io/plume/kotlindoc/io/github/plume/oss/extractor/) class
+[`Jimple2Cpg`](https://plume-oss.github.io/plume/latest/api/com/github/plume/oss/Jimple2Cpg.html) class
 where one can load and project the CPG using the given driver and classpath. 
 
-Either source or class files can be loaded where source files will be compiled into class files. The
-extractor makes use of [Soot](https://soot-oss.github.io/soot/) to convert the class files into
-Jimple from which the call graph is constructed. Soot's
-[`UnitGraph`](https://www.sable.mcgill.ca/soot/doc/soot/toolkits/graph/UnitGraph.html) is used in
-order to construct the method bodies.
+Either class or JAR files can be loaded. The extractor makes use of
+[Soot](https://soot-oss.github.io/soot/) to convert the class files into Jimple from which the call
+graph is constructed. Soot's
+[`SootMethod`](https://www.sable.mcgill.ca/soot/doc/soot/SootMethod.html) is used in order to
+construct the method bodies from AST information. AST ordering and control targets are then used to 
+derive a CFG from which the rest of the dependencies and subgraphs are derived from.
 
 ![Extractor Architectural Overview](../assets/images/getting-started/extractor-overview.png)
 

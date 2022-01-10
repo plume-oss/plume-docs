@@ -17,28 +17,20 @@ schema there is additional setup beforehand but this is made simple by making us
 ## Driver Configuration and Usage
 
 Since TigerGraph makes use of REST, it only requires server information and (optionally) an
-authentication e.g. when using [TigerGraph Cloud](https://www.tigergraph.com/cloud/). The driver is
+authentication e.g. when using [TigerGraph Cloud](https://www.tigergraph.com/cloud/). By default the hostname will be 127.0.0.1, port 9000 and protocol HTTP. The driver is
 created as follows:
-```kotlin
-val driver = (DriverFactory(GraphDatabase.TIGER_GRAPH) as TigerGraphDriver)
+```scala
+val driver = new TigerGraphDriver(
+      hostname = "localhost",
+      restPpPort = 9000,
+      gsqlPort = 14240,
+      username = "tigergraph",
+      password = "tigergraph",
+    )
 ```
-By default the hostname will be 127.0.0.1, port 9000 and protocol HTTP. To change this, one can call
-the builder-style methods:
-```kotlin
-driver.hostname("127.0.0.1")    // Set host
-        .gsqlPort(14240)        // Set GSQL Server port
-        .restPpPort(9000)       // Set Rest++ port
-        .secure(false)          // Determine protocol (false for HTTP and true for HTTPS)
-        .authKey("secret_token")// Set authentication token for request header
-        .username("tigergraph") // Set username
-        .password("tigergraph") // Set password
-```
-Once a configuration is changed the next request will immediately use the new details so one does
-not have to create a new driver object.
 
-In the current version, Plume will make use of a graph called "cpg". This schema can be built by
-calling:
-```kotlin
+Plume will make use of a graph called "cpg". This schema can be built by calling:
+```scala
 driver.buildSchema()
 ```
 This wraps around the `GsqlCli` JAR. This JAR makes a call to `System::exit` which is temporarily
@@ -69,11 +61,3 @@ GraphStudio.
 ### Limitations
 
 - Enforced schema requires compulsory setup to use with Plume.
-- Requires a license for enterprise application.
-
-## TigerGraph Schema
-
-Due to pattern matching queries requiring knowledge of the edge type and the way edge restrictions
-work, there are only two vertex types. `META_DATA_VERT` contains language data and `CPG_VERT`
-represents all CPG vertices where the Plume driver will use the `label` property to determine which
-of the other properties to serialize and use.

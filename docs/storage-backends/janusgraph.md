@@ -14,6 +14,11 @@ pluggable storage backend and a pluggable search engine. Plume communicates with
 Gremlin remote connection which is described in the documentation
 [here](https://docs.janusgraph.org/connecting/java/).
 
+!!! warning "JanusGraph No Longer Supported"
+    
+    As from version 1.0.0 JanusGraph is no longer a supported backend. These docs follow from 
+    older versions (<= 0.6.3) from the Kotlin-based Plume libraries.
+
 ## Driver Configuration and Usage
 
 JanusGraph's driver can be created as follows:

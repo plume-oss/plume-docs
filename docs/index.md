@@ -1,4 +1,4 @@
-![Plume Banner](./assets/images/logo-text.png){: style="margin-left: 20%; margin-right: auto; width:60%" }
+![Plume Banner](./assets/images/logo-text.png){: style="margin-left: 10%; margin-right: auto; width:80%" }
 
 # Introduction
 
@@ -22,15 +22,19 @@ unsuitable for AST analysis.
 Plume can be downloaded via 
 [![Download](https://jitpack.io/v/plume-oss/plume.svg)](https://jitpack.io/#plume-oss/plume).
 
+!!! note "Optimized in Joern as jimple2cpg"
+
+    Plume is the original implementation of [jimple2cpg](https://github.com/joernio/joern/tree/master/joern-cli/frontends/jimple2cpg). The frontend on the Joern project is optimized
+    around OverflowDB and is much more lightweight. This is project focuses on experimenting with
+    incremental dataflow analysis and comparing database backend performance.
+
 ## Benefits of using Plume
 
-Plume is an open-source Kotlin project which provides a type-safe interface for
+Plume is an open-source Scala project which provides a type-safe interface for
 interacting with a graph database constructed using
 [ShiftLeft's](https://www.shiftleft.io/) (the primary maintainers of Fabian
 Yamaguchi's [Joern](https://github.com/ShiftLeftSecurity/joern)) [CPG
 schema](https://github.com/ShiftLeftSecurity/codepropertygraph/blob/master/schema/src/main/resources/schemas/base.json).
-Since Kotlin is interoperable with Java, one should not have any difficulty
-incorporating Plume in their Java projects.
 
 The idea of storing the CPG in a graph database is motivated by the observation
 that this approach will allow the analysis to be done incrementally (one does
@@ -47,12 +51,12 @@ can use Joern to perform analysis on Plume generated CPGs.
 ## Supported Languages
 
 Since Plume analyzes JVM bytecode, if a language is able to compile to JVM
-bytecode then Plume can accept it. Plume supports compiling Java source code
-automatically.
+bytecode then Plume can accept it. Plume no longer supports compiling Java source
+code to bytecode automatically.
 
-Simply load the respective `.java` or `.class` files (or a directory or JAR file
-containing either) using the [extractor](./plume-basics/extracting-cpg.md)
-accordingly.
+Simply load the respective `.jar` or `.class` files (or a directory or JAR file
+containing either) using the [Jimple2Cpg::createCpg](https://plume-oss.github.io/plume/latest/api/com/github/plume/oss/Jimple2Cpg.html)
+method accordingly.
 
 ## General Plume Benefits
 
@@ -66,15 +70,6 @@ accordingly.
 * Simple to use interface.
 * Open source under the liberal [Apache 2
   license](https://en.wikipedia.org/wiki/Apache_License).
-
-## Roadmap
-
-1. ~~Able to project JVM bytecode to CPG~~
-1. ~~Store CPG in various graph databases with database agnostic interface~~
-1. ~~Run `dataflowengineoss` passes over Plume CPGs~~
-1. ~~Implement change detection and incremental analysis~~
-1. Benchmark and prove most efficient/fastest/cheapest storage backend
-1. Perform overhaul around best storage backend for optimized performance
 
 ## Sponsored by
 

@@ -8,9 +8,15 @@ with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
 Install `mkdocs` with `pip3`:
 
 ```bash
-sudo apt install python3-pip # if you need pip3
 pip3 install mkdocs          # to install mkdocs
 pip3 install mkdocs-material # to install mkdocs-material
+```
+
+or with `conda` (ARM friendly):
+
+```bash
+conda install mkdocs          # to install mkdocs
+conda install mkdocs-material # to install mkdocs-material
 ```
 
 To run development server, use:

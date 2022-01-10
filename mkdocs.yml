@@ -32,19 +32,12 @@ theme:
 nav:
   - Introduction: 'index.md'
   - 'Getting Started':
-      - 'Dependencies': 'getting-started/dependencies.md'
       - 'Basic Usage': 'getting-started/basic-usage.md'
       - 'Architectural Overview': 'getting-started/architectural-overview.md'
   - 'Plume Basics':
       - 'Code Property Graph': 'plume-basics/code-property-graph.md'
-      - 'Using the Extractor': 'plume-basics/extracting-cpg.md'
-      - 'Obtaining Results': 'plume-basics/obtaining-results.md'
-      - 'Serializing Results': 'plume-basics/graph-io.md'
+      - 'Taint Analysis': 'plume-basics/taint-analysis.md'
       - 'Incremental Updates': 'plume-basics/incremental.md'
-      - 'Metrics': 'plume-basics/metrics.md'
-  - 'Configuration':
-      - 'Cache Configuration': 'configuration/cache-config.md'
-      - 'Extractor Configuration': 'configuration/extractor-config.md'
   - 'Storage Backends':
       - 'Introduction': 'storage-backends/introduction.md'
       - 'TinkerGraph': 'storage-backends/tinkergraph.md'
@@ -53,7 +46,7 @@ nav:
       - 'TigerGraph': 'storage-backends/tigergraph.md'
       - 'Amazon Neptune': 'storage-backends/neptune.md'
       - 'Neo4j': 'storage-backends/neo4j.md'
-  - 'KDoc API': 'kdoc.md'
+  - 'ScalaDoc API': 'scala-doc.md'
 
 markdown_extensions:
   - attr_list

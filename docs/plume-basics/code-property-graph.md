@@ -39,11 +39,3 @@ graph databases support multiple graphs and one could store snapshots before eac
 
 As one updates a part of the original code the whole graph does not need to be re-generated only the
 affected subgraph. This allows for successive analysis to be much faster and updates to be minor.
-
-## Language Agnostic
-
-One major advantage of the concept of a CPG is that the projected graph is not language dependent.
-This allows for re-use of many types of analysis as the analysis is written for the graph and not a
-specific language.
-
-Plume is currently aiming to do just that but currently only supports Java 8+.

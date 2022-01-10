@@ -12,28 +12,20 @@ with large graphs.
 
 OverflowDb is an in-memory storage backend option with an overflow to disk mechanism when memory
 starts filling up. This can be obtained as follows:
-```kotlin
-val driver = DriverFactory(GraphDatabase.OVERFLOWDB) as OverflowDbDriver
+```scala
+val driver = new OverflowDbDriver(
+      // To specifies if OverflowDb should write to disk when memory is constrained
+      storageLocation = Some(dbOutputFile),
+      // Percentage of the heap from when overflowing should begin to occur
+      heapPercentageThreshold = 80, 
+      // If specified, OverflowDB will measure and report serialization/deserialization timing averages
+      serializationStatsEnabled = false,
+      // Max call depth when tracking data-flows on calls to nodesReachableBy
+      mallCallDepth = 2
+    )
 ```
 
-This will simply create an in-memory database with overflow enabled. To specify where the database
-will be serialized/deserialized/overflowed make use of OverflowDbDriver::setStorageLocation` method
-as follows:
-```kotlin
-driver.setStorageLocation("/path/to/file.bin")
-```
-This exported graph can then be loaded back into the driver by specifying the same path.
-
-Other configuration options:
-
-```kotlin
-// To specifies if OverflowDb should write to disk when memory is constrained
-driver.setOverflow(false) // default true
-// Percentage of the heap from when overflowing should begin to occur
-driver.setHeapPercentageThreshold(90) // default 80%
-// If specified, OverflowDB will measure and report serialization/deserialization timing averages
-driver.setSerializationStatsEnabled(true) // default false
-```
+This exported graph can then be loaded back into the driver by specifying the same path under `storageLocation`.
 
 ## Benefits of using OverflowDB
 
